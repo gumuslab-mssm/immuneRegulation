@@ -1,0 +1,446 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="//igv.org/web/img/favicon.ico">
+    <title>ImmuneRegulation</title>
+
+    <!-- Bootstrap CSS - NOT REQUIRED FOR IGV -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery UI CSS -->
+    <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css"/>
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+    <link rel="shortcut icon" href="//igv.org/web/img/favicon.ico">
+
+    <!-- IGV CSS -->
+    <link rel="stylesheet" type="text/css" href="https://igv.org/web/beta/igv.css">
+
+    <!-- IGV GTEx CSS -->
+    <!--link rel="stylesheet" href="http://igv.org/web/release/1.0.1/igv-1.0.1.css?v=cl80"-->
+
+    <!-- IGV Release CSS -->
+    <!--link rel="stylesheet" type="text/css" href="https://igv.org/web/release/1.0.7/igv-1.0.7.css"-->
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.css">
+
+    <!--link rel="stylesheet" type="text/css" src="./css/jquery.dataTables.min.css"-->
+
+    <!-- jQuery JS -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+
+    <!-- Bootstrap JS -  NOT REQUIRED FOR IGV -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- IGV TEST JS-->
+    <!-- https://igv.org/web/test/multilocus/igv-multilocus.js -->
+    <!-- http://igv.org/web/release/1.0.1/igv-1.0.1.min.js -->
+    <!-- https://igv.org/web/beta/igv-beta.js-->
+
+    <!-- IGV JS - DEV -->
+    <!--script src="./js/igv-selim.js"></script-->
+
+    <!-- IGV JS - Deneme DEV -->
+    <script src="./js/igv-deneme.js"></script>
+
+    <!-- IGV GTEx JS -->
+    <!--script src="http://igv.org/web/release/1.0.1/igv-1.0.1.min.js" type="text/javascript"></script-->
+    
+    <!-- IGV Release JS -->
+    <!--script type="text/javascript" src="https://igv.org/web/release/1.0.7/igv-1.0.7.js"></script-->
+
+    <!-- IGV PROD JS -->
+    <!--script type="text/javascript" src="https://igv.org/web/beta/igv-beta.js"></script-->
+
+    <!-- D3 JS -->
+    <script src='http://d3js.org/d3.v3.min.js'></script>
+
+    <!-- Bootstrap Multi-Select -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js" integrity="sha256-1fK87Pt9T7XXn/Vj3CWSfJlZkL5f73092A8YL7p7avc=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" integrity="sha256-O1jJhOIWWDc3wq75g7aXDl7aEQT2XPkieX/Mz/u4hQ0=" crossorigin="anonymous"/>    
+    
+    <!-- DataTables JS -->
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
+    <!--script type="text/javascript" charset="utf8" src="./js/jquery.dataTables.min.js"></script-->
+
+    
+<style type="text/css">
+    
+#custom-search-input {
+        margin:0;
+        margin-top: 10px;
+        padding: 0;
+    }
+ 
+    #custom-search-input .search-query {
+        padding-right: 3px;
+        padding-right: 4px \9;
+        padding-left: 3px;
+        padding-left: 4px \9;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+ 
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+ 
+    #custom-search-input button {
+        border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: relative;
+        left: -28px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        color:#D9230F;
+    }
+ 
+    .search-query:focus + button {
+        z-index: 3;   
+    }
+.graph-svg-component {
+    background-color: AliceBlue;
+}
+
+.filter {
+  display: inline-block;
+}
+
+#geneSearch {
+    background: #1974B8;  
+}
+
+#geneSearch:hover {
+    background: #035b9c;   
+}
+
+#geneSearch:active {
+    background: #1974B8;   
+}
+
+.btn, .btn-primary {
+    background: white;
+    padding: 14px 24px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    border-radius: 0;
+    border: 1 solid;
+    border-color: #bbb;
+}
+
+.btn-group, .btn-group-vertical {
+    margin-left: 10px;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+    border: 2 solid;
+    border-color: #bbb;
+}
+
+.btn-primary.active, .btn-primary:focus, .btn-primary:active, .open > .dropdown-toggle.btn-primary {
+    background: lightgray;
+    color: #000;
+    
+    box-shadow: none;
+    border: 1 solid;
+    border-color: #bbb;
+}
+
+.btn-primary:hover {
+    background: #bbb;
+    border: 1 solid;
+    border-color: #bbb;
+}
+
+.btn-primary:active, .btn-primary.raised.active {
+    background: lightgray;
+    box-shadow: none;
+    margin-bottom: -3px;
+    margin-top: 3px;
+    border: 1 solid;
+    border-color: #bbb;
+}
+
+.btn-primary.disabled, .btn-primary.disabled:focus, .btn-primary.disabled:active {
+    background: lightgray;
+    color: white;
+    opacity: .7;
+    border: 1 solid;
+    border-color: #bbb;
+}
+
+circle {
+    fill-opacity: .7;
+    fill: rgb(30,144,255);
+    stroke: #aaa; 
+}
+
+circle:hover {
+  fill: red;
+  stroke: #ccc;
+}
+
+caption {
+    font-size:medium;
+    text-align: center;
+    color: blue;
+
+}
+
+table {
+    font-size: medium;
+}
+
+path.line {
+  fill: none;
+  stroke: #666;
+  stroke-width: 1.5px;
+}
+
+path.area {
+  fill: #e7e7e7;
+}
+
+.axis {
+  shape-rendering: crispEdges;
+}
+
+.x.axis line {
+  stroke: #fff;
+}
+
+.x.axis .minor {
+  stroke-opacity: .5;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.y.axis line,
+.y.axis path {
+  fill: none;
+  stroke: #000;
+}
+
+.axis--y text {
+  font: oblique 10px Georgia, serif;
+}
+
+div.tooltip {   
+    position: absolute;         
+    text-align: left;         
+    width: 160px;                    
+    height: auto;                   
+    padding: 10px;               
+    font: 12px sans-serif;      
+    background: lightsteelblue; 
+    border: 0px;        
+    border-radius: 8px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);         
+    pointer-events: none;           
+}
+
+.navbar-nav:hover {
+    background: #77b7ec;
+}
+
+.navbar-nav>.open {
+    background: #1974B8;
+}
+
+.navbar-nav > li > a:active {
+    font-size: larger;
+}
+
+.navbar-nav > li > a:focus {
+    font-size: larger;
+
+}
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+    background: #77b7ec;
+}
+
+
+</style>
+
+</head>
+
+
+
+<body role="document" style="background: #eee;">
+
+<nav class="navbar navbar-inverse navbar-fixed-top" style= "margin-botom:0px;">
+
+    <div class="container-fluid" style = "background: #1974B8;">
+        <div class="navbar-header navbar-nav">
+            <a class="navbar-brand" style="color: white; margin-left: 10px;" href="https://www.immunespace.org/">ImmuneSpace</a>
+        </div>
+        <div id="navbar">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle navbar-brand" style="color: white; margin-left: 10px;" data-toggle="dropdown" role="button" aria-expanded="false">immuneRegulation
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu" style="margin-left: 10px;" role="menu">
+                        <li>
+                            <a href="index.html" style="font-size:medium;">Query Browser</a>
+                        </li> 
+                                              
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle navbar-brand" style="color: white; margin-left: 10px; opacity:0.5;" data-toggle="dropdown" role="button" aria-expanded="false">Example Queries&nbsp&nbsp&nbsp
+                        </a>
+                    
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" style="color: white; margin-left: 10px;" href="tutorials.html">Tutorials</a>
+                    
+                    </a>
+                </li>
+                
+            </ul>
+
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" style="color: white; margin-left: 10px;" href="feedback.html">Contact Us</a>
+                    
+                    </a>
+                </li>
+                
+            </ul>
+
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" style="color: white; margin-left: 10px;" href="faq.html">FAQ</a>
+                    
+                    </a>
+                </li>
+                
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://www.mssm.edu" style = "padding-top: 0px; padding-bottom: 0px;">
+                    <img src="images/logo.gif" alt="Mount Sinai" height="50" style = "margin-right: 120px;">
+                    <!--span class="glyphicon glyphicon-user"></span> Sign Up -->
+                    </a>
+                </li>
+                <li> </li>
+            </ul>
+
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+
+</nav>
+
+
+
+<div class="container" id = "mainContainer" style="background: white; padding-bottom: 50px; margin-top: 70px; margin-bottom:70px;"> <!-- container start -->
+
+    <div class="row" style="background: white; padding-bottom: 50px; margin-top: 30px; font-family:serif;"> 
+            <div class="col-md-1" >
+                
+            </div>
+            
+            <div class="col-md-10" >
+            <ul>            
+                    <h3 style="text-align:center"s> <em> <strong> Frequently Asked Questions (FAQ) </strong> </em>  </h3>
+                
+                <li> <h4 style="margin-top: 40px;"> <em> <strong> What do you mean by expression quantitative trait loci (eQTLs)? </strong> </em>  </h4> </li>
+
+                 <h4 style="margin-top: 30px; line-height: 1.3;"> eQTLs are regions of the genome containing DNA sequence variants that influence the expression level of one or more genes.<br><br>eQTLs may act in <strong> cis </strong>(locally) or <strong> trans </strong> (at a distance) to a gene. </h4> 
+
+                 <li> <h4 style="margin-top: 40px;"> <em> <strong> What do you mean by Transcription factors (TF)? </strong> </em>  </h4> </li>
+
+                 <h4 style="margin-top: 30px; line-height: 1.3;"> Transcription factors are proteins involved in the process of converting, or transcribing, DNA into RNA.<br><br>Transcription factors include a wide number of proteins, excluding RNA polymerase, that initiate and regulate the transcription of genes. </h4> 
+
+                
+                <li> <h4 style="margin-top: 40px;"> <em> <strong> Why some of the information (e.g. gene name, SNP id, etc.) is missing in the results that I get? </strong> </em>  </h4> </li>
+
+                 <h4 style="margin-top: 30px; line-height: 1.3;"> We gather the data for Non-HIPC studies from public resources (e.g. literature). We process and perform the necessary data completion/transformation as much as possible. However, there is still missing information in some of the datasets.</h4>
+
+                <li> <h4 style="margin-top: 40px;"> <em> <strong> Why does it take too long to visualize the results of my query? </strong> </em>  </h4> </li>
+
+                 <h4 style="margin-top: 30px; line-height: 1.3;"> The time it takes to visualize the results of your query may depend on various factors. However, one of the main factors is the number of datasets included in your query. If your query involves multiple datasets with large volumes, loading and processing will take a longer time. <br><br>To alleviate the side effects of having multiple datasets in your query, we suggest that you begin with a limited number of datasets and then modify your query to add more datasets incrementally. </h4> 
+
+                 <li> <h4 style="margin-top: 40px;"> <em> <strong> Why can't I see/visualize the results for my private study(ies)? </strong> </em>  </h4> </li>
+
+                 <h4 style="margin-top: 30px; line-height: 1.3;"> The user/private datasets you upload to immuneRegulation must be formatted in a certain way to properly visualize the data. Please make sure your dataset is formatted accordingly (e.g. columns, column headers) with the instructions before uploading to immuneRegulation. </h4>
+
+                 <h4 style="margin-top: 50px; font-size:20px;"> <em>  For further questions, comments, and/or issues, please contact us:  zeynep dot gumus at mssm dot edu  </em>  </h4>
+
+
+
+            </ul>   
+
+            </div>
+
+
+</div>  <!-- container finish-->
+
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom" style= "margin:5px; border: 1 px solid; border-color: gray; height: 60px;">
+
+    <nav class="nav-upper" style = "background: #3f97ca; height: 60px; padding-top:10px;">
+        <div class="container-fluid" style = "text-align:center; color:white; font-size: normal;">
+            <ul class="nav navbar-upper">
+                <li> ImmuneRegulation <span> | </span> Version 1.0.0 </li>
+                <li> <span><a href = "http://research.mssm.edu/gumuslab/" style = "color:white; text-decoration:underline;"> Gümüş Lab </a></span> 
+                    <span> | </span>Icahn School of Medicine at Mount Sinai </li>
+            </ul>
+        </div>
+    </nav>
+    <!--div class="container-fluid" style = "background: #3f97ca; height: 70px;">
+        
+        <div id="bottom-navbar" style = "text-align:center; color:white; font-size: medium;" >
+            <div class="nav navbar-nav" style="display: inline-block; float: none;">
+                <ul class="nav navbar-nav">
+                    <li> Gumus Lab </li>
+                    <li> Icahn School of Medicine at Mount Sinai </li>
+                    <li> 2017 </li>
+                </ul>
+            </div>
+        </div>
+    </div-->
+
+</nav>
+
+<div class="container-fluid">
+
+    <footer>
+        <p></p>
+    </footer>
+
+</div>
+
+
+
+</body>
+
+</html>
