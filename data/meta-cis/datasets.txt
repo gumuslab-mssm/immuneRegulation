@@ -1,0 +1,58 @@
+id	cell	subtype	ethnicity	subjects	meta	pub
+f-11	Whole Blood	-	European American	5257	no	Genome Biology
+f-12	Whole Blood	-	Mixed	338	no	Science
+f-13	Whole Blood	-	European	5311	yes	Nature Genetics
+f-14	Whole Blood	-	European	2166	no	Nature Genetics
+f-15	Whole Blood	-	East Asian	1799	no	PLoS Genetics
+f-16	Whole Blood	-	East Asian	298	no	PLoS One
+f-17	Whole Blood	-	Mixed	31684	yes	BioRxiv
+f-21	Monocytes	-	African American	162	no	Science
+f-22	Monocytes	-	East Asian	155	no	Science
+f-23	Monocytes	-	European American	377	no	Science
+f-24	Monocytes	-	Mixed	696	yes	Science
+f-25	Monocytes	-	European	288	no	Nature Genetics
+f-26	Monocytes	-	European American	432	no	Science
+f-27	Monocytes	-	Mixed	91	no	Cell
+f-28	Monocytes	non-classical	Mixed	91	no	Cell
+f-31	CD4+ T-cells	-	African American	162	no	Science
+f-32	CD4+ T-cells	-	East Asian	155	no	Science
+f-33	CD4+ T-cells	-	European American	377	no	Science
+f-34	CD4+ T-cells	-	Mixed	696	yes	Science
+f-35	CD4+ T-cells	-	Mixed	91	no	Cell
+f-36	CD4+ T-cells	naive Treg-cells	Mixed	91	no	Cell
+f-37	CD4+ T-cells	memory Treg-cells	Mixed	91	no	Cell
+f-38	CD4+ T-cells	Th1-cells	Mixed	91	no	Cell
+f-39	CD4+ T-cells	Th1/17-cells	Mixed	91	no	Cell
+f-390	CD4+ T-cells	Th17-cells	Mixed	91	no	Cell
+f-391	CD4+ T-cells	Th2-cells	Mixed	91	no	Cell
+f-392	CD4+ T-cells	memory Tfh-cells	Mixed	91	no	Cell
+f-41	B-cells	-	European	288	no	Nature Genetics
+f-42	B-cells	-	Mixed	91	no	Cell
+f-51	Neutrophils	-	European	101	no	Nature Communications
+f-61	LPS-exposure 2hours	-	European	432	no	Science
+f-62	LPS-exposure 24hours	-	European	432	no	Science
+f-63	IFN exposure	-	European	432	no	Science
+f-71	LCL	-	European	373	no	Nature
+f-72	LCL	-	African	89	no	Nature
+f-81	Methylation	-	European	3841	no	Nature Genetics
+f-91	NK-cell	CD56dim CD16+ 	Mixed	91	no	Cell
+f-92	CD8+ T-cells	-	Mixed	91	no	Cell
+f-211	Influenza Vaccination	Day 0	HIPC (Mayo)	150	no	na
+f-212	Influenza Vaccination	Day 3	HIPC (Mayo)	150	no	na
+f-213	Influenza Vaccination	Day 28	HIPC (Mayo)	150	no	na
+f-221	Influenza Vaccination	Day -7	HIPC (NIH)	51	no	na
+f-222	Influenza Vaccination	Day 0	HIPC (NIH)	50	no	na
+f-223	Influenza Vaccination	Day 1	HIPC (NIH)	53	no	na
+f-224	Influenza Vaccination	Day 7	HIPC (NIH)	49	no	na
+f-225	Influenza Vaccination	Day 70	HIPC (NIH)	51	no	na
+f-231	Influenza Vaccination	Day 0	HIPC (Yale)	54	no	na
+f-232	Influenza Vaccination	Day 2	HIPC (Yale)	55	no	na
+f-233	Influenza Vaccination	Day 7	HIPC (Yale)	55	no	na
+f-234	Influenza Vaccination	Day 28	HIPC (Yale)	55	no	na
+f-241	Influenza Vaccination	Day 0	HIPC (Emory)	55	no	na
+f-242	Influenza Vaccination	Day 1	HIPC (Emory)	53	no	na
+f-243	Influenza Vaccination	Day 3	HIPC (Emory)	53	no	na
+f-244	Influenza Vaccination	Day 7	HIPC (Emory)	51	no	na
+f-245	Influenza Vaccination	Day 14	HIPC (Emory)	53	no	na
+f-301	Chikungunya	Acute	Mixed	41	no	na
+f-302	Chikungunya	Convalescent	Mixed	43	no	na

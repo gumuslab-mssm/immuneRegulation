@@ -1,0 +1,23 @@
+id	cell	ethnicity	subjects	meta	pub
+f-11	Whole Blood	European American	5257	no	Genome Biology
+f-13	Whole Blood	European	5311	yes	Nature Genetics
+f-15	Whole Blood	East Asian	1799	no	PLoS Genetics
+f-16	Whole Blood	East Asian	298	no	PLoS One
+f-17	Whole Blood	Mixed	31684	yes	BioRxiv
+f-24	Monocytes	Mixed	696	yes	Science
+f-25	Monocytes	European	288	no	Nature Genetics
+f-26	Monocytes	European American	432	no	Science
+f-34	CD4+ T-cells	Mixed	696	yes	Science
+f-41	B-cells	European	288	no	Nature Genetics
+f-51	Neutrophils	European	101	no	Nature Communications
+f-61	LPS exposure-2hours	European	432	no	Science
+f-62	LPS exposure-24hours	European	432	no	Science
+f-63	IFN exposure	European	432	no	Science
+f-81	Methylation	European	3841	no	Nature Genetics
+f-211	Influenza Vaccination	Mayo-Day0	150	no	na
+f-212	Influenza Vaccination	Mayo-Day3	150	no	na
+f-213	Influenza Vaccination	Mayo-Day28	150	no	na
+f-221	Influenza Vaccination	NIH-Day-7	51	no	na
+f-224	Influenza Vaccination	NIH-Day7	49	no	na
+f-225	Influenza Vaccination	NIH-Day70	51	no	na
+f-302	Chikungunya	Mixed	43	no	na
