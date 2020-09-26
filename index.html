@@ -55,7 +55,7 @@
 
 
     <!-- IGV JS  -->
-    <script src="./js/igv-immuneregulation-July2019.js"></script>
+    <script src="./js/igv-immuneregulation-Nov2019.js"></script>
 
     <script src="./js/savePng.js"></script>
     <script src="./js/jsPDF2.js"></script>
@@ -378,6 +378,7 @@
 
         });
 
+        
     
     </script>
 
@@ -759,13 +760,13 @@ div.tooltip {
                 </li>
             </ul>
 
-            <ul class="nav navbar-nav">
+            <!--ul class="nav navbar-nav">
                 <li><a class="navbar-brand" style="color: white; margin-left: 10px;" href="metadata-all.html">Query Meta-data</a>
                     
                     </a>
                 </li>
                 
-            </ul>
+            </ul-->
 
             <ul class="nav navbar-nav">
                 <li><a class="navbar-brand" style="color: white; margin-left: 10px;" href="tutorials.html">Tutorials</a>
@@ -834,6 +835,8 @@ div.tooltip {
                 </span>
                 <span><strong> : </strong>
             </span>
+
+            <p style = "margin-top:10px;"> <a style = "margin-left: 60px; padding-top:20 px;" href="metadata-all.html"> Query Meta-data </a></p>
         </div>
         
         <div class="col-md-6" style="font-size:medium;">
@@ -891,7 +894,7 @@ div.tooltip {
                             <a href="#" onClick = filterTransUser()> &#x21B3; trans-eQTL</a>
                     </li>
                     <li class="list-group-item" id="listHIPC" style="color:black; background:#a1cce4;">
-                        <span class="badge">34</span>
+                        <span class="badge">33</span>
                             <a href="#" onClick = filterHIPC()> 
                                 <!--span style="margin-right:5px;" class="glyphicon glyphicon-option-vertical"> </span--> &#x21E3; HIPC Studies </a>
                     </li>
@@ -908,24 +911,24 @@ div.tooltip {
                                 <span style="margin-right:5px;" class="glyphicon glyphicon-option-vertical"> </span--> &#x21B3; trans-eQTL</a>
                     </li>
                     <li class="list-group-item" id="listHLAHIPC" style="color:black; padding-left:35px; background:#a1cce4;">
-                        <span class="badge">2</span>
+                        <span class="badge">1</span>
                             <a href="#" onClick = filterHLAType()>
                                 <!--span style="margin-right:5px;" class="glyphicon glyphicon-option-vertical"> </span>
                                 <span style="margin-right:5px;" class="glyphicon glyphicon-option-vertical"> </span--> &#x21B3; HLA Types</a>
                     </li>
                     <li class="list-group-item" id="listNonHIPC" style="color:black;background:#a1cce4;">
-                        <span class="badge">86</span>
+                        <span class="badge">124</span>
                             <a href="#" onClick = filterNonHIPC()>
                                 <!--span style="margin-right:5px;" class="glyphicon glyphicon-option-vertical"> </span--> &#x21E3; Non-HIPC Studies </a>
                     </li>
                     <li class="list-group-item" id="listCisNonHIPC" style="color:black; padding-left:35px;background:#a1cce4;">
-                        <span class="badge">69</span>
+                        <span class="badge">98</span>
                             <a href="#" onClick = filterCisNonHIPC()> 
                                 <!--span style="margin-right:5px;" class="glyphicon glyphicon-menu-right"> </span>
                                 <span style="margin-right:5px;" class="glyphicon glyphicon-option-horizontal"> </span--> &#x21B3; cis-eQTL</a>
                     </li>
                     <li class="list-group-item" id="listTransNonHIPC" style="color:black; padding-left:35px;background:#a1cce4;">
-                        <span class="badge">17</span>
+                        <span class="badge">26</span>
                             <a href="#" onClick = filterTransNonHIPC()> 
                                 <!--span style="margin-right:5px;" class="glyphicon glyphicon-menu-right"> </span>
                                 <span style="margin-right:5px;" class="glyphicon glyphicon-option-horizontal"> </span--> &#x21B3; trans-eQTL</a>
@@ -984,6 +987,26 @@ div.tooltip {
                     </li>
 
                     <li class="list-group-item non-hipc" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-bottom:0px;">                      
+                        <strong>*** COVID-19 ***</strong>                         
+                    </li>
+
+                    <li class="list-group-item non-hipc" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px;border-bottom:0px;border-top:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study001" value="on">
+                        <span value="001">Lung - Meta-analysis - European (PLoS Genetics, 2012) </span>  
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 1111 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="tooltip" title="Study includes 1,111 patients who passed clinical, genotyping and gene expression quality control assessments according to the three sites of recruitment, Laval University, University of British Columbia, and University of Groningen. The majority of the subjects were smokers or former-smokers. There were some differences in the clinical characteristics across the sites including age, lung function and smoking status. To account for this heterogeneity between sites, authors performed a meta-analysis rather than a pooled analysis for eQTL discovery."></span>   
+                        <a href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1003029" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>
+                    </li>
+
+                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px;border-bottom:0px;border-top:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study002" value="on">
+                        <span value="002">Lung - Mixed ethnicity - GTEx Consortium v8 (bioRxiv, 2019) </span>  
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 515 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="tooltip" title="The Genotype-Tissue Expression (GTEx) project was established to characterize genetic effects on the transcriptome across human tissues, and to link these regulatory mechanisms to trait and disease associations. v8 data is based on 17,382 RNA-sequencing samples from 54 tissues of 948 post-mortem donors. Authors comprehensively characterize genetic associations for gene expression and splicing in cis and trans, showing that regulatory associations are found for almost all genes, and describe the underlying molecular mechanisms and their contribution to allelic heterogeneity and pleiotropy of complex traits. Leveraging the large diversity of tissues, they provide insights into the tissue-specificity of genetic effects, and show that cell type composition is a key factor in understanding gene regulatory mechanisms in human tissues."></span>   
+                        <a href="https://www.biorxiv.org/content/10.1101/787903v1" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>
+                    </li>
+
+                    <li class="list-group-item non-hipc" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-bottom:0px;">                      
                         <strong>Whole Blood</strong>                         
                     </li>
 
@@ -997,9 +1020,9 @@ div.tooltip {
                     
                     <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;border-bottom:0px;padding-left:30px;border-top:0px;">
                         <input type="checkbox" class="studyopt Option" id="gtex" value="on">
-                        <span value="12">Whole Blood - Mixed ethnicity - GTEx Consortium (Science, 2015)</span>    
-                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 338 samples </span> 
-                        <span class="glyphicon glyphicon-info-sign" title="The Genotype-Tissue Expression (GTEx) project aims to provide to the scientific community a resource with which to study human gene expression and regulation and its relationship to genetic variation. This project will collect and analyze multiple human tissues from donors who are also densely genotyped, to assess genetic variation within their genomes." aria-hidden="true"></span>
+                        <span value="12">Whole Blood - Mixed ethnicity - GTEx Consortium v8 (bioRxiv, 2019)</span>    
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 670 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="The Genotype-Tissue Expression (GTEx) project was established to characterize genetic effects on the transcriptome across human tissues, and to link these regulatory mechanisms to trait and disease associations. v8 data is based on 17,382 RNA-sequencing samples from 54 tissues of 948 post-mortem donors. Authors comprehensively characterize genetic associations for gene expression and splicing in cis and trans, showing that regulatory associations are found for almost all genes, and describe the underlying molecular mechanisms and their contribution to allelic heterogeneity and pleiotropy of complex traits. Leveraging the large diversity of tissues, they provide insights into the tissue-specificity of genetic effects, and show that cell type composition is a key factor in understanding gene regulatory mechanisms in human tissues." aria-hidden="true"></span>
                         <a href="https://gtexportal.org/home/" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>
                     </li>
                    
@@ -1066,6 +1089,14 @@ div.tooltip {
                         <span class="glyphicon glyphicon-info-sign" title="Authors describe analyses combining two previously published data sets derived from individuals in the TwinsUK cohort: RNA-seq from four tissues and WGS from the UK10K project." aria-hidden="true"></span> 
                         <a href="https://www.nature.com/articles/ng.3979" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
                     </li>
+
+                    <!--li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study191" value="on">
+                        <span value="191">Whole Blood - European - single-cell - Lifelines Deep (Nature Genetics, 2018)</span> 
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 45 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="Authors studied celltype-specific effects of genetic variation on genome-wide gene expression by generating scRNA-seq data of ~25,000 PBMCs from 45 donors of the population-based cohort study Lifelines Deep. After quality control, they first assessed the extent to which previously reported cis-eQTLs from bulk whole blood, using either 94 DeepSAGE samples or 2,116 RNA-seq samples, also show significant effects in the scRNA-seq dataset. For this analysis, they treated the scRNA-seq data as representing bulk PBMCs (by averaging expression levels of all cells per gene per sample, referred to as ‘bulk-like PBMCs’). They detected 50 and 311 significant cis-eQTLs (gene-level FDR of 0.05) that were previously reported in the DeepSAGE and RNA-seq study, respectively. Although only small proportions (8% and 1%, respectively) of previously reported cis-eQTLs were significant in the scRNA-seq analysis, 96% and 90.4% had identical allelic directions as in the DeepSAGE and RNA-seq studies, respectively, indicating that these cis-eQTLs reflect similar regulatory effects. The few discordant eQTLs may reflect the slightly different sample composition of both datasets (PBMCs versus whole blood) and the relatively few sequence reads targeting the 3′-end of genes in the bulk RNA-seq dataset." aria-hidden="true"></span> 
+                        <a href="https://www.nature.com/articles/s41588-018-0089-9" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
+                    </li-->
 
                     <li class="list-group-item non-hipc" style="color:black;padding-top:5px; padding-bottom:5px; padding-left:30px; border-bottom:0px;">       
                         <strong>Monocytes</strong>     
@@ -1151,6 +1182,38 @@ div.tooltip {
                         <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 194 samples </span> 
                         <span class="glyphicon glyphicon-info-sign" title="BLUEPRINT Consortium carried out high-resolution genetic, epigenetic, and transcriptomic profiling in three major human immune cell types (CD14+ monocytes, CD16+ neutrophils, and naive CD4+ T cells) from up to 197 individuals. They assessed, quantitatively, the relative contribution of cis-genetic and epigenetic factors to transcription and evaluated their impact as potential sources of confounding in epigenome-wide association studies. Further, they characterized highly coordinated genetic effects on gene expression, methylation, and histone variation through quantitative trait locus (QTL) mapping and allele-specific (AS) analyses." aria-hidden="true"></span>
                         <a href="https://doi.org/10.1016/j.cell.2016.10.026" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
+                    </li>
+
+                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study291" value="on">
+                        <span value="291">Monocytes - European - single-cell - Lifelines Deep (Nature Genetics, 2018)</span> 
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 45 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="Authors studied celltype-specific effects of genetic variation on genome-wide gene expression by generating scRNA-seq data of ~25,000 PBMCs from 45 donors of the population-based cohort study Lifelines Deep. After quality control, they first assessed the extent to which previously reported cis-eQTLs from bulk whole blood, using either 94 DeepSAGE samples or 2,116 RNA-seq samples, also show significant effects in the scRNA-seq dataset. For this analysis, they treated the scRNA-seq data as representing bulk PBMCs (by averaging expression levels of all cells per gene per sample, referred to as ‘bulk-like PBMCs’). They detected 50 and 311 significant cis-eQTLs (gene-level FDR of 0.05) that were previously reported in the DeepSAGE and RNA-seq study, respectively. Although only small proportions (8% and 1%, respectively) of previously reported cis-eQTLs were significant in the scRNA-seq analysis, 96% and 90.4% had identical allelic directions as in the DeepSAGE and RNA-seq studies, respectively, indicating that these cis-eQTLs reflect similar regulatory effects. The few discordant eQTLs may reflect the slightly different sample composition of both datasets (PBMCs versus whole blood) and the relatively few sequence reads targeting the 3′-end of genes in the bulk RNA-seq dataset." aria-hidden="true"></span> 
+                        <a href="https://www.nature.com/articles/s41588-018-0089-9" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
+                    </li>
+
+                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study292" value="on">
+                        <span value="292">Monocytes (classical) - European - single-cell - Lifelines Deep (Nature Genetics, 2018)</span> 
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 45 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="Authors studied celltype-specific effects of genetic variation on genome-wide gene expression by generating scRNA-seq data of ~25,000 PBMCs from 45 donors of the population-based cohort study Lifelines Deep. After quality control, they first assessed the extent to which previously reported cis-eQTLs from bulk whole blood, using either 94 DeepSAGE samples or 2,116 RNA-seq samples, also show significant effects in the scRNA-seq dataset. For this analysis, they treated the scRNA-seq data as representing bulk PBMCs (by averaging expression levels of all cells per gene per sample, referred to as ‘bulk-like PBMCs’). They detected 50 and 311 significant cis-eQTLs (gene-level FDR of 0.05) that were previously reported in the DeepSAGE and RNA-seq study, respectively. Although only small proportions (8% and 1%, respectively) of previously reported cis-eQTLs were significant in the scRNA-seq analysis, 96% and 90.4% had identical allelic directions as in the DeepSAGE and RNA-seq studies, respectively, indicating that these cis-eQTLs reflect similar regulatory effects. The few discordant eQTLs may reflect the slightly different sample composition of both datasets (PBMCs versus whole blood) and the relatively few sequence reads targeting the 3′-end of genes in the bulk RNA-seq dataset." aria-hidden="true"></span> 
+                        <a href="https://www.nature.com/articles/s41588-018-0089-9" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
+                    </li>
+
+                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study293" value="on">
+                        <span value="293">Monocytes (non-classical) - European - single-cell - Lifelines Deep (Nature Genetics, 2018)</span> 
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 45 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="Authors studied celltype-specific effects of genetic variation on genome-wide gene expression by generating scRNA-seq data of ~25,000 PBMCs from 45 donors of the population-based cohort study Lifelines Deep. After quality control, they first assessed the extent to which previously reported cis-eQTLs from bulk whole blood, using either 94 DeepSAGE samples or 2,116 RNA-seq samples, also show significant effects in the scRNA-seq dataset. For this analysis, they treated the scRNA-seq data as representing bulk PBMCs (by averaging expression levels of all cells per gene per sample, referred to as ‘bulk-like PBMCs’). They detected 50 and 311 significant cis-eQTLs (gene-level FDR of 0.05) that were previously reported in the DeepSAGE and RNA-seq study, respectively. Although only small proportions (8% and 1%, respectively) of previously reported cis-eQTLs were significant in the scRNA-seq analysis, 96% and 90.4% had identical allelic directions as in the DeepSAGE and RNA-seq studies, respectively, indicating that these cis-eQTLs reflect similar regulatory effects. The few discordant eQTLs may reflect the slightly different sample composition of both datasets (PBMCs versus whole blood) and the relatively few sequence reads targeting the 3′-end of genes in the bulk RNA-seq dataset." aria-hidden="true"></span> 
+                        <a href="https://www.nature.com/articles/s41588-018-0089-9" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
+                    </li>
+
+                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study294" value="on">
+                        <span value="294">Monocytes - European (Nature Communications, 2017)</span> 
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 134 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="For the full eQTL cohort, they analyzed primary monocytes isolated from 134 healthy male individuals (185 before quality control), which were either left untreated (baseline) or stimulated with the same three pathogen-derived stimuli, and gene expression was profiled after 90 min and 6 h." aria-hidden="true"></span> 
+                        <a href="https://www.nature.com/articles/s41467-017-00366-1" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
                     </li>
 
                     <li class="list-group-item non-hipc" style="color:black;padding-top:5px; padding-bottom:5px; padding-left:30px; border-bottom:0px;">   
@@ -1277,6 +1340,22 @@ div.tooltip {
                         <a href="https://doi.org/10.1371/journal.pgen.1004461" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
                     </li>
 
+                    <li class="list-group-item non-hipc" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study396" value="on">
+                        <span value="396">CD4+ T-Cells - European - Estonian Biobank (PLOS Genetics, 2017)</span> 
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 313 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="The aims of this study were to perform cis- and trans-eQTL mapping in purified CD4+ and CD8+ T cells and evaluate their pathogenic implications for autoimmune mechanisms. This study participants were healthy donors of the Estonian Genome Center of the University of Tartu. In total, 313 subjects were selected for the study, with median age 54 (standard deviation 17.8), 154 females and 159 males." aria-hidden="true"></span> 
+                        <a href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1006643" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
+                    </li>
+
+                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study397" value="on">
+                        <span value="397">CD4+ T-Cells - European - single-cell - Lifelines Deep (Nature Genetics, 2018)</span> 
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 45 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="Authors studied celltype-specific effects of genetic variation on genome-wide gene expression by generating scRNA-seq data of ~25,000 PBMCs from 45 donors of the population-based cohort study Lifelines Deep. After quality control, they first assessed the extent to which previously reported cis-eQTLs from bulk whole blood, using either 94 DeepSAGE samples or 2,116 RNA-seq samples, also show significant effects in the scRNA-seq dataset. For this analysis, they treated the scRNA-seq data as representing bulk PBMCs (by averaging expression levels of all cells per gene per sample, referred to as ‘bulk-like PBMCs’). They detected 50 and 311 significant cis-eQTLs (gene-level FDR of 0.05) that were previously reported in the DeepSAGE and RNA-seq study, respectively. Although only small proportions (8% and 1%, respectively) of previously reported cis-eQTLs were significant in the scRNA-seq analysis, 96% and 90.4% had identical allelic directions as in the DeepSAGE and RNA-seq studies, respectively, indicating that these cis-eQTLs reflect similar regulatory effects. The few discordant eQTLs may reflect the slightly different sample composition of both datasets (PBMCs versus whole blood) and the relatively few sequence reads targeting the 3′-end of genes in the bulk RNA-seq dataset." aria-hidden="true"></span> 
+                        <a href="https://www.nature.com/articles/s41588-018-0089-9" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
+                    </li>
+
                     <li class="list-group-item non-hipc" style="color:black;padding-top:5px; padding-bottom:5px; padding-left:30px; border-bottom:0px;">                       
                         <strong>B-cells</strong>                          
                     </li>
@@ -1294,6 +1373,14 @@ div.tooltip {
                         <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 91 samples </span> 
                         <span class="glyphicon glyphicon-info-sign" title="In the first phase of the DICE (Database of Immune Cell EQTLs/Expression/Epigenomics) project, authors present transcriptomic data generated from 13 immune cell types isolated from 106 leukapheresis samples provided by 91 healthy subjects. " aria-hidden="true"></span>
                         <a href="https://doi.org/10.1016/j.cell.2018.10.022" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                        
+                    </li>
+
+                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study43" value="on">
+                        <span value="43">B-cells - European - single-cell - Lifelines Deep (Nature Genetics, 2018)</span> 
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 45 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="Authors studied celltype-specific effects of genetic variation on genome-wide gene expression by generating scRNA-seq data of ~25,000 PBMCs from 45 donors of the population-based cohort study Lifelines Deep. After quality control, they first assessed the extent to which previously reported cis-eQTLs from bulk whole blood, using either 94 DeepSAGE samples or 2,116 RNA-seq samples, also show significant effects in the scRNA-seq dataset. For this analysis, they treated the scRNA-seq data as representing bulk PBMCs (by averaging expression levels of all cells per gene per sample, referred to as ‘bulk-like PBMCs’). They detected 50 and 311 significant cis-eQTLs (gene-level FDR of 0.05) that were previously reported in the DeepSAGE and RNA-seq study, respectively. Although only small proportions (8% and 1%, respectively) of previously reported cis-eQTLs were significant in the scRNA-seq analysis, 96% and 90.4% had identical allelic directions as in the DeepSAGE and RNA-seq studies, respectively, indicating that these cis-eQTLs reflect similar regulatory effects. The few discordant eQTLs may reflect the slightly different sample composition of both datasets (PBMCs versus whole blood) and the relatively few sequence reads targeting the 3′-end of genes in the bulk RNA-seq dataset." aria-hidden="true"></span> 
+                        <a href="https://www.nature.com/articles/s41588-018-0089-9" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
                     </li>
 
                     <li class="list-group-item non-hipc" style="color:black;padding-top:5px; padding-bottom:5px; padding-left:30px; border-bottom:0px;">                        
@@ -1352,7 +1439,107 @@ div.tooltip {
                         <a href="http://science.sciencemag.org/content/343/6175/1246949" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                    
                     </li>
 
-                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px; padding-bottom:5px; padding-left:30px; border-bottom:0px;">                       
+                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study64" value="on">
+                        <span value="64">Lipopolysaccharide (LPS) - 90 minutes - European (Nature Communications, 2017)</span> 
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 134 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="For the full eQTL cohort, they analyzed primary monocytes isolated from 134 healthy male individuals (185 before quality control), which were either left untreated (baseline) or stimulated with the same three pathogen-derived stimuli, and gene expression was profiled after 90 min and 6 h." aria-hidden="true"></span> 
+                        <a href="https://www.nature.com/articles/s41467-017-00366-1" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
+                    </li>
+
+                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study65" value="on">
+                        <span value="65">Lipopolysaccharide (LPS) - 6 hours - European (Nature Communications, 2017)</span> 
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 134 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="For the full eQTL cohort, they analyzed primary monocytes isolated from 134 healthy male individuals (185 before quality control), which were either left untreated (baseline) or stimulated with the same three pathogen-derived stimuli, and gene expression was profiled after 90 min and 6 h." aria-hidden="true"></span> 
+                        <a href="https://www.nature.com/articles/s41467-017-00366-1" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
+                    </li>
+
+                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study66" value="on">
+                        <span value="66">Muramyl-dipeptide (MDP) - 90 minutes - European (Nature Communications, 2017)</span> 
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 134 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="For the full eQTL cohort, they analyzed primary monocytes isolated from 134 healthy male individuals (185 before quality control), which were either left untreated (baseline) or stimulated with the same three pathogen-derived stimuli, and gene expression was profiled after 90 min and 6 h." aria-hidden="true"></span> 
+                        <a href="https://www.nature.com/articles/s41467-017-00366-1" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
+                    </li>
+
+                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study67" value="on">
+                        <span value="67">Muramyl-dipeptide (MDP) - 6 hours - European (Nature Communications, 2017)</span> 
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 134 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="For the full eQTL cohort, they analyzed primary monocytes isolated from 134 healthy male individuals (185 before quality control), which were either left untreated (baseline) or stimulated with the same three pathogen-derived stimuli, and gene expression was profiled after 90 min and 6 h." aria-hidden="true"></span> 
+                        <a href="https://www.nature.com/articles/s41467-017-00366-1" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
+                    </li>
+
+                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study68" value="on">
+                        <span value="68">5′-triphosphate RNA (RNA) - 90 minutes - European (Nature Communications, 2017)</span> 
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 134 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="For the full eQTL cohort, they analyzed primary monocytes isolated from 134 healthy male individuals (185 before quality control), which were either left untreated (baseline) or stimulated with the same three pathogen-derived stimuli, and gene expression was profiled after 90 min and 6 h." aria-hidden="true"></span> 
+                        <a href="https://www.nature.com/articles/s41467-017-00366-1" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
+                    </li>
+
+                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study69" value="on">
+                        <span value="69">5′-triphosphate RNA (RNA) - 6 hours - European (Nature Communications, 2017)</span> 
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 134 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="For the full eQTL cohort, they analyzed primary monocytes isolated from 134 healthy male individuals (185 before quality control), which were either left untreated (baseline) or stimulated with the same three pathogen-derived stimuli, and gene expression was profiled after 90 min and 6 h." aria-hidden="true"></span> 
+                        <a href="https://www.nature.com/articles/s41467-017-00366-1" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
+                    </li>
+
+                    <li class="list-group-item non-hipc" style="color:black;padding-top:5px; padding-bottom:5px; padding-left:30px; border-bottom:0px;">                       
+                        <strong>Exposure Studies - Dendritic Cells </strong>                         
+                    </li>
+
+                    <li class="list-group-item non-hipc" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px;border-bottom:0px;border-top:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study131" value="on">
+                        <span value="131">Lipopolysaccharide (LPS) - Mixed (Science, 2014)</span>
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 356 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="Authors derived dendritic cells (DCs) from peripheral blood monocytes of healthy individuals (295 Caucasians, 122 African Americans, 117 East Asians) and stimulated them with Escherichia coli lipopolysaccharide (LPS), influenza virus, or the cytokine interferon-β (IFN-β) to generate 1598 transcriptional profiles. They genotyped each of these individuals at sites of common genetic variation and identified the genetic variants that best explain variation in gene expression and gene induction between individuals. They then tested mechanistic predictions from these associations using synthetic promoter constructs and genome engineering." aria-hidden="true"></span>
+                        <a href="https://science.sciencemag.org/content/343/6175/1246980" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                          
+                    </li>
+
+                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px;border-bottom:0px;border-top:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study132" value="on">
+                        <span value="132">Lipopolysaccharide (LPS) - response QTLs - Mixed (Science, 2014)</span>
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 356 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="Authors derived dendritic cells (DCs) from peripheral blood monocytes of healthy individuals (295 Caucasians, 122 African Americans, 117 East Asians) and stimulated them with Escherichia coli lipopolysaccharide (LPS), influenza virus, or the cytokine interferon-β (IFN-β) to generate 1598 transcriptional profiles. They genotyped each of these individuals at sites of common genetic variation and identified the genetic variants that best explain variation in gene expression and gene induction between individuals. They then tested mechanistic predictions from these associations using synthetic promoter constructs and genome engineering." aria-hidden="true"></span>
+                        <a href="https://science.sciencemag.org/content/343/6175/1246980" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                          
+                    </li>
+
+                    <li class="list-group-item non-hipc" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px;border-bottom:0px;border-top:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study133" value="on">
+                        <span value="133">Influenza infection - Mixed (Science, 2014)</span>
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 342 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="Authors derived dendritic cells (DCs) from peripheral blood monocytes of healthy individuals (295 Caucasians, 122 African Americans, 117 East Asians) and stimulated them with Escherichia coli lipopolysaccharide (LPS), influenza virus, or the cytokine interferon-β (IFN-β) to generate 1598 transcriptional profiles. They genotyped each of these individuals at sites of common genetic variation and identified the genetic variants that best explain variation in gene expression and gene induction between individuals. They then tested mechanistic predictions from these associations using synthetic promoter constructs and genome engineering." aria-hidden="true"></span>
+                        <a href="https://science.sciencemag.org/content/343/6175/1246980" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                          
+                    </li>
+
+                    <li class="list-group-item non-hipc" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px;border-bottom:0px;border-top:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study134" value="on">
+                        <span value="134">Influenza infection - response QTLs - Mixed (Science, 2014)</span>
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 342 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="Authors derived dendritic cells (DCs) from peripheral blood monocytes of healthy individuals (295 Caucasians, 122 African Americans, 117 East Asians) and stimulated them with Escherichia coli lipopolysaccharide (LPS), influenza virus, or the cytokine interferon-β (IFN-β) to generate 1598 transcriptional profiles. They genotyped each of these individuals at sites of common genetic variation and identified the genetic variants that best explain variation in gene expression and gene induction between individuals. They then tested mechanistic predictions from these associations using synthetic promoter constructs and genome engineering." aria-hidden="true"></span>
+                        <a href="https://science.sciencemag.org/content/343/6175/1246980" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                          
+                    </li>
+
+                    <li class="list-group-item non-hipc" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px;border-bottom:0px;border-top:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study135" value="on">
+                        <span value="135">IFN-beta - Mixed (Science, 2014)</span>
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 284 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="Authors derived dendritic cells (DCs) from peripheral blood monocytes of healthy individuals (295 Caucasians, 122 African Americans, 117 East Asians) and stimulated them with Escherichia coli lipopolysaccharide (LPS), influenza virus, or the cytokine interferon-β (IFN-β) to generate 1598 transcriptional profiles. They genotyped each of these individuals at sites of common genetic variation and identified the genetic variants that best explain variation in gene expression and gene induction between individuals. They then tested mechanistic predictions from these associations using synthetic promoter constructs and genome engineering." aria-hidden="true"></span>
+                        <a href="https://science.sciencemag.org/content/343/6175/1246980" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                          
+                    </li>
+
+                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px;border-bottom:0px;border-top:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study136" value="on">
+                        <span value="136">IFN-beta - response QTLs - Mixed (Science, 2014)</span>
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 284 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="Authors derived dendritic cells (DCs) from peripheral blood monocytes of healthy individuals (295 Caucasians, 122 African Americans, 117 East Asians) and stimulated them with Escherichia coli lipopolysaccharide (LPS), influenza virus, or the cytokine interferon-β (IFN-β) to generate 1598 transcriptional profiles. They genotyped each of these individuals at sites of common genetic variation and identified the genetic variants that best explain variation in gene expression and gene induction between individuals. They then tested mechanistic predictions from these associations using synthetic promoter constructs and genome engineering." aria-hidden="true"></span>
+                        <a href="https://science.sciencemag.org/content/343/6175/1246980" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                          
+                    </li>
+
+                    <li class="list-group-item non-hipc" style="color:black;padding-top:5px; padding-bottom:5px; padding-left:30px; border-bottom:0px;">                       
                         <strong>Lymphoblastoid Cell Lines</strong>                         
                     </li>
 
@@ -1436,7 +1623,7 @@ div.tooltip {
                         <a href="https://www.nature.com/articles/ng.3979" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
                     </li>
 
-                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
+                    <li class="list-group-item non-hipc" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
                         <input type="checkbox" class="studyopt Option" id="study791" value="on">
                         <span value="791">LCL - Mixed - ALSPAC (PLOS Genetics, 2014)</span> 
                         <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 869 samples </span> 
@@ -1560,7 +1747,7 @@ div.tooltip {
                         <a href="https://doi.org/10.1016/j.cell.2015.07.048" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
                     </li>
 
-                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px; padding-bottom:5px; padding-left:30px; border-bottom:0px;">                       
+                    <li class="list-group-item non-hipc" style="color:black;padding-top:5px; padding-bottom:5px; padding-left:30px; border-bottom:0px;">                       
                         <strong>Other</strong>                         
                     </li>
 
@@ -1586,6 +1773,70 @@ div.tooltip {
                         <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 204 samples </span> 
                         <span class="glyphicon glyphicon-info-sign" title="Authors used the GenCord cohort of 204 newborn Europeans’ lymphoblastoid cell lines, T-cells and fibroblasts derived from umbilical cords. To identify associations between SNPs and alternative splicing (asQTL, alternative splicing Quantitative Trait Locus), they calculated the Spearman Rank Correlation between alternative splicing levels and SNP genotypes within 1 Mb of TSSs." aria-hidden="true"></span> 
                         <a href="https://doi.org/10.1371/journal.pgen.1004461" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
+                    </li>
+
+                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px;border-bottom:0px;border-top:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study003" value="on">
+                        <span value="003">Prostate - Mixed ethnicity - GTEx Consortium v8 (bioRxiv, 2019) </span>  
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 221 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="tooltip" title="The Genotype-Tissue Expression (GTEx) project was established to characterize genetic effects on the transcriptome across human tissues, and to link these regulatory mechanisms to trait and disease associations. v8 data is based on 17,382 RNA-sequencing samples from 54 tissues of 948 post-mortem donors. Authors comprehensively characterize genetic associations for gene expression and splicing in cis and trans, showing that regulatory associations are found for almost all genes, and describe the underlying molecular mechanisms and their contribution to allelic heterogeneity and pleiotropy of complex traits. Leveraging the large diversity of tissues, they provide insights into the tissue-specificity of genetic effects, and show that cell type composition is a key factor in understanding gene regulatory mechanisms in human tissues."></span>   
+                        <a href="https://www.biorxiv.org/content/10.1101/787903v1" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>
+                    </li>
+
+                    <li class="list-group-item non-hipc" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study94" value="on">
+                        <span value="94">CD8+ T-Cells - European - Estonian Biobank (PLOS Genetics, 2017)</span> 
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 313 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="The aims of this study were to perform cis- and trans-eQTL mapping in purified CD4+ and CD8+ T cells and evaluate their pathogenic implications for autoimmune mechanisms. This study participants were healthy donors of the Estonian Genome Center of the University of Tartu. In total, 313 subjects were selected for the study, with median age 54 (standard deviation 17.8), 154 females and 159 males." aria-hidden="true"></span> 
+                        <a href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1006643" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
+                    </li>
+
+                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study95" value="on">
+                        <span value="95">CD8+ T-Cells - European - single-cell - Lifelines Deep (Nature Genetics, 2018)</span> 
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 45 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="Authors studied celltype-specific effects of genetic variation on genome-wide gene expression by generating scRNA-seq data of ~25,000 PBMCs from 45 donors of the population-based cohort study Lifelines Deep. After quality control, they first assessed the extent to which previously reported cis-eQTLs from bulk whole blood, using either 94 DeepSAGE samples or 2,116 RNA-seq samples, also show significant effects in the scRNA-seq dataset. For this analysis, they treated the scRNA-seq data as representing bulk PBMCs (by averaging expression levels of all cells per gene per sample, referred to as ‘bulk-like PBMCs’). They detected 50 and 311 significant cis-eQTLs (gene-level FDR of 0.05) that were previously reported in the DeepSAGE and RNA-seq study, respectively. Although only small proportions (8% and 1%, respectively) of previously reported cis-eQTLs were significant in the scRNA-seq analysis, 96% and 90.4% had identical allelic directions as in the DeepSAGE and RNA-seq studies, respectively, indicating that these cis-eQTLs reflect similar regulatory effects. The few discordant eQTLs may reflect the slightly different sample composition of both datasets (PBMCs versus whole blood) and the relatively few sequence reads targeting the 3′-end of genes in the bulk RNA-seq dataset." aria-hidden="true"></span> 
+                        <a href="https://www.nature.com/articles/s41588-018-0089-9" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
+                    </li>
+
+                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study96" value="on">
+                        <span value="96">NK Cells - European - single-cell - Lifelines Deep (Nature Genetics, 2018)</span> 
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 45 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="Authors studied celltype-specific effects of genetic variation on genome-wide gene expression by generating scRNA-seq data of ~25,000 PBMCs from 45 donors of the population-based cohort study Lifelines Deep. After quality control, they first assessed the extent to which previously reported cis-eQTLs from bulk whole blood, using either 94 DeepSAGE samples or 2,116 RNA-seq samples, also show significant effects in the scRNA-seq dataset. For this analysis, they treated the scRNA-seq data as representing bulk PBMCs (by averaging expression levels of all cells per gene per sample, referred to as ‘bulk-like PBMCs’). They detected 50 and 311 significant cis-eQTLs (gene-level FDR of 0.05) that were previously reported in the DeepSAGE and RNA-seq study, respectively. Although only small proportions (8% and 1%, respectively) of previously reported cis-eQTLs were significant in the scRNA-seq analysis, 96% and 90.4% had identical allelic directions as in the DeepSAGE and RNA-seq studies, respectively, indicating that these cis-eQTLs reflect similar regulatory effects. The few discordant eQTLs may reflect the slightly different sample composition of both datasets (PBMCs versus whole blood) and the relatively few sequence reads targeting the 3′-end of genes in the bulk RNA-seq dataset." aria-hidden="true"></span> 
+                        <a href="https://www.nature.com/articles/s41588-018-0089-9" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
+                    </li>
+
+                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study97" value="on">
+                        <span value="97">PBMC - European - single-cell - Lifelines Deep (Nature Genetics, 2018)</span> 
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 45 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="Authors studied celltype-specific effects of genetic variation on genome-wide gene expression by generating scRNA-seq data of ~25,000 PBMCs from 45 donors of the population-based cohort study Lifelines Deep. After quality control, they first assessed the extent to which previously reported cis-eQTLs from bulk whole blood, using either 94 DeepSAGE samples or 2,116 RNA-seq samples, also show significant effects in the scRNA-seq dataset. For this analysis, they treated the scRNA-seq data as representing bulk PBMCs (by averaging expression levels of all cells per gene per sample, referred to as ‘bulk-like PBMCs’). They detected 50 and 311 significant cis-eQTLs (gene-level FDR of 0.05) that were previously reported in the DeepSAGE and RNA-seq study, respectively. Although only small proportions (8% and 1%, respectively) of previously reported cis-eQTLs were significant in the scRNA-seq analysis, 96% and 90.4% had identical allelic directions as in the DeepSAGE and RNA-seq studies, respectively, indicating that these cis-eQTLs reflect similar regulatory effects. The few discordant eQTLs may reflect the slightly different sample composition of both datasets (PBMCs versus whole blood) and the relatively few sequence reads targeting the 3′-end of genes in the bulk RNA-seq dataset." aria-hidden="true"></span> 
+                        <a href="https://www.nature.com/articles/s41588-018-0089-9" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
+                    </li>
+
+                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study98" value="on">
+                        <span value="98">Dendritic Cells - European - single-cell - Lifelines Deep (Nature Genetics, 2018)</span> 
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 45 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="Authors studied celltype-specific effects of genetic variation on genome-wide gene expression by generating scRNA-seq data of ~25,000 PBMCs from 45 donors of the population-based cohort study Lifelines Deep. After quality control, they first assessed the extent to which previously reported cis-eQTLs from bulk whole blood, using either 94 DeepSAGE samples or 2,116 RNA-seq samples, also show significant effects in the scRNA-seq dataset. For this analysis, they treated the scRNA-seq data as representing bulk PBMCs (by averaging expression levels of all cells per gene per sample, referred to as ‘bulk-like PBMCs’). They detected 50 and 311 significant cis-eQTLs (gene-level FDR of 0.05) that were previously reported in the DeepSAGE and RNA-seq study, respectively. Although only small proportions (8% and 1%, respectively) of previously reported cis-eQTLs were significant in the scRNA-seq analysis, 96% and 90.4% had identical allelic directions as in the DeepSAGE and RNA-seq studies, respectively, indicating that these cis-eQTLs reflect similar regulatory effects. The few discordant eQTLs may reflect the slightly different sample composition of both datasets (PBMCs versus whole blood) and the relatively few sequence reads targeting the 3′-end of genes in the bulk RNA-seq dataset." aria-hidden="true"></span> 
+                        <a href="https://www.nature.com/articles/s41588-018-0089-9" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
+                    </li>
+
+                    <li class="list-group-item non-hipc" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px;border-bottom:0px;border-top:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study99" value="on">
+                        <span value="99">Dendritic Cells - Mixed (Science, 2014)</span>
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 528 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="Authors derived dendritic cells (DCs) from peripheral blood monocytes of healthy individuals (295 Caucasians, 122 African Americans, 117 East Asians) and stimulated them with Escherichia coli lipopolysaccharide (LPS), influenza virus, or the cytokine interferon-β (IFN-β) to generate 1598 transcriptional profiles. They genotyped each of these individuals at sites of common genetic variation and identified the genetic variants that best explain variation in gene expression and gene induction between individuals. They then tested mechanistic predictions from these associations using synthetic promoter constructs and genome engineering." aria-hidden="true"></span>
+                        <a href="https://science.sciencemag.org/content/343/6175/1246980" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                          
+                    </li>
+
+                    <li class="list-group-item non-hipc cis" style="color:black;padding-top:5px;padding-bottom:5px;padding-left:30px; border-top:0px;border-bottom:0px;">
+                        <input type="checkbox" class="studyopt Option" id="study990" value="on">
+                        <span value="990">Monocyte-derived macrophages (MDMs) - Mixed - Systemic Sclerosis (Ann Rheum Dis, 2018)</span> 
+                        <span style = "float:right;"> <span style = "color:gray; font-size:smaller;"> 57 samples </span> 
+                        <span class="glyphicon glyphicon-info-sign" title="Authors carried out RNA sequencing and genome-wide genotyping in MDMs from 57 patients with SSc and 15 controls. The differential expression and expression quantitative trait locus analysis in SSc was further integrated with epigenetic, expression and eQTL data from skin, monocytes, neutrophils and lymphocytes." aria-hidden="true"></span> 
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/29348297/" target="_blank"> <span class="glyphicon glyphicon-book" aria-hidden="true"></span></span> </a>                         
                     </li>
 
                     <li class="list-group-item hipc" style="color:black;padding-top:5px; padding-bottom:5px; padding-left:10px; border-top:0px;">                       
@@ -1948,7 +2199,7 @@ div.tooltip {
                     </li>
 
 
-                    <li class="list-group-item hipc hla noqtl" style="color:black;padding-top:5px; padding-bottom:5px; padding-left:30px; border-bottom:0px;">                        
+                    <!--li class="list-group-item hipc hla noqtl" style="color:black;padding-top:5px; padding-bottom:5px; padding-left:30px; border-bottom:0px;">                        
                         <strong>Kidney Transplant</strong>                         
                     </li>
 
@@ -1974,7 +2225,7 @@ div.tooltip {
 
                         </span> 
 
-                    </li>
+                    </li-->
                     
                     
 
@@ -2484,11 +2735,43 @@ div.tooltip {
     var targetList = [];
 
     var geneSnpToggle = 0;
+    var searchURLHandled = 0;
 
-    function LoadGWAS() {
-    
+    LoadGWAS();
+
+
+    function LoadGWAS() 
+    {
         d3.tsv("./data/gwas.txt", function(data) {
             gwasData.push(data); 
+
+            // Handle URL input
+            if(searchURLHandled == 0)
+            {
+                var searchText = window.location.search;
+                var studyText = searchText.split("&")[0];
+                var studyType = studyText.split("=")[1];
+                var geneText = searchText.split("&")[1];
+                var searchGene = geneText.split("=")[1];
+                var datasetText = searchText.split("&")[2];
+                var datasetVal = datasetText.split("=")[1];
+
+                console.log('text:', searchText);
+                console.log('study:', studyType);
+                console.log('gene:', searchGene);
+                console.log('dataset:', datasetVal);
+                
+                if(searchText != "")
+                {
+                    document.getElementById("geneSearch").innerText = "Modify Query";
+                    document.getElementById("queryRow").style.marginTop = "60px";
+
+
+                    searchGeneURL(studyType, searchGene, datasetVal);
+                }
+
+                searchURLHandled = 1;
+            }
         });
     }
 
@@ -3688,7 +3971,6 @@ div.tooltip {
     function selectInt()
     {
         operation = 1;
-
     }
 
     
@@ -4020,7 +4302,16 @@ div.tooltip {
         if(document.getElementById("framingham").checked == true)
              datasetvalues.push(11);
 
-         if(document.getElementById("gtex").checked == true)
+        if(document.getElementById("study001").checked == true)
+             datasetvalues.push(001);
+
+        if(document.getElementById("study002").checked == true)
+             datasetvalues.push(002);
+
+        if(document.getElementById("study003").checked == true)
+             datasetvalues.push(003); 
+
+        if(document.getElementById("gtex").checked == true)
              datasetvalues.push(12);
 
         if(document.getElementById("westra").checked == true)
@@ -4295,6 +4586,90 @@ div.tooltip {
 
          if(document.getElementById("study403").checked == true)
              datasetvalues.push(403);
+
+         // Datasets added in July 2020
+
+        if(document.getElementById("study94").checked == true)
+            datasetvalues.push(94);
+
+        if(document.getElementById("study396").checked == true)
+            datasetvalues.push(396);
+
+        //if(document.getElementById("study191").checked == true)
+          //  datasetvalues.push(191);
+
+        if(document.getElementById("study291").checked == true)
+            datasetvalues.push(291);
+
+        if(document.getElementById("study292").checked == true)
+            datasetvalues.push(292);
+
+        if(document.getElementById("study293").checked == true)
+            datasetvalues.push(293);
+
+        if(document.getElementById("study397").checked == true)
+            datasetvalues.push(397);
+
+        if(document.getElementById("study95").checked == true)
+            datasetvalues.push(95);
+
+        if(document.getElementById("study43").checked == true)
+            datasetvalues.push(43);
+
+        if(document.getElementById("study96").checked == true)
+            datasetvalues.push(96);
+
+        if(document.getElementById("study97").checked == true)
+            datasetvalues.push(97);
+
+        if(document.getElementById("study98").checked == true)
+            datasetvalues.push(98);
+
+        if(document.getElementById("study990").checked == true)
+            datasetvalues.push(990);
+
+        if(document.getElementById("study294").checked == true)
+            datasetvalues.push(294);
+
+        if(document.getElementById("study64").checked == true)
+            datasetvalues.push(64);
+
+        if(document.getElementById("study65").checked == true)
+            datasetvalues.push(65);
+
+        if(document.getElementById("study66").checked == true)
+            datasetvalues.push(66);
+
+        if(document.getElementById("study67").checked == true)
+            datasetvalues.push(67);
+
+        if(document.getElementById("study68").checked == true)
+            datasetvalues.push(68);
+
+        if(document.getElementById("study69").checked == true)
+            datasetvalues.push(69);
+
+        if(document.getElementById("study99").checked == true)
+            datasetvalues.push(99);
+
+        if(document.getElementById("study131").checked == true)
+            datasetvalues.push(131);
+
+        if(document.getElementById("study132").checked == true)
+            datasetvalues.push(132);
+
+        if(document.getElementById("study133").checked == true)
+            datasetvalues.push(133);
+
+        if(document.getElementById("study134").checked == true)
+            datasetvalues.push(134);
+
+        if(document.getElementById("study135").checked == true)
+            datasetvalues.push(135);
+
+        if(document.getElementById("study136").checked == true)
+            datasetvalues.push(136);
+
     }
 
     
@@ -4488,22 +4863,19 @@ div.tooltip {
             var userCisSpan = document.getElementById(spanid);
             userCisSpan.innerText = userCisFilename[i] + " - (Cis)";
         } 
-
     }
 
 
     function loadFile()
-    {
-       
+    {       
         var file = document.querySelector('input[type=file]').files[0];
         var ddd = d3.tsv.parse(file)
-        create_table(data);
-      
+        create_table(data);     
     }
 
 
-    function parseFile(){
-
+    function parseFile()
+    {
           d3.text(reader.result, function(text) {
             userArr[userDataId] = d3.tsv.parseRows(text).map(function(row) {
                 return row.map(function(value) {
@@ -4515,12 +4887,175 @@ div.tooltip {
             userDataId++;
 
         });
-
-          
     }
 
     
-    function searchGene() {
+    function searchGeneURL(studyType, searchGene, datasetVal) 
+    {
+        //geneData = []; //reset geneData
+
+        //Reset GUI ...
+            var infoRow = document.getElementById("immRegExpRow");
+            infoRow.style.display = "none";
+
+            var browseRow = document.getElementById("browseRow");
+            browseRow.style.display = "none";
+
+            var geneRow = document.getElementById("geneEntryRow");
+            geneRow.style.display = "none";
+
+            var privDiv = document.getElementById("privDiv");
+            privDiv.style.display = "none";
+
+            var missingDataDiv = document.getElementById("missingDataset");
+            missingDataDiv.style.display = "none";
+
+            var multipleGeneNode = document.getElementById("multipleGeneRow");
+            multipleGeneNode.style.visibility = "hidden";
+
+            var submitButtonDiv = document.getElementById("submitButton");
+            submitButtonDiv.style.textAlign = "left";
+
+            if(document.getElementById("studyEntryRow").style.display == "none")
+            {
+                var queryRow = document.getElementById("queryRow");
+                queryRow.style.marginTop = "60px";
+            }
+            
+            $("#operationEntryRow").hide();
+
+            document.getElementById("geneSearch").innerText = "Modify Query";
+
+
+        //eQTL Data Visualization Steps...    
+        currenti = 0;
+        currentj = 49;
+        SNP_interest = "";
+        datasetvalues = []; //reset datasetvalues
+
+        //addDataSets();
+        datasetvalues.push(datasetVal);
+
+        /*var gene = document.getElementById("geneVal").value;
+        var lastChar = gene.substr(gene.length - 1);
+
+        if(lastChar == ',')
+            gene = gene.substring(0, gene.length - 1);
+        
+        var geneArray = gene.split(',');*/
+        //study = 2;
+        var gene = searchGene;
+
+        $('#geneSetDiv').empty();
+
+        //Remove cis Legend Clone Div
+        $('#cisLegendClone').remove();
+
+
+        //Cis-eQTL
+        if(studyType == 1) 
+        {
+            $('#transRow').empty(); // Remove contents of transDiv (trans eqtls)
+            $('#geneDataDiv').remove(); //remove Gene Data
+            $('#eqtlDataDiv').remove(); // Remove eqtl details 
+            //$('#plotRow').empty(); 
+
+            var filterRow = document.getElementById("filterRow"); 
+            filterRow.style.height = "0px";
+            filterRow.style.visibility = "hidden";
+
+            /*var transRow = document.getElementById("transRow");
+            transRow.style.height = "30px";
+            transRow.style.visibility = "hidden"; */
+
+            var plotRow = document.getElementById("plotRow");
+            plotRow.style.height = "0px";
+            plotRow.style.visibility = "hidden";
+
+            var manplot = document.getElementById("manPlot");
+            manplot.style.height = "0px";
+
+            var filterCol = document.getElementById("filterCol"); 
+            filterCol.style.height = "0px";
+            filterCol.style.visibility = "hidden";
+            
+            removeControls();
+ 
+            drawCis(datasetvalues);
+            gwasRead = 1;
+        }
+                
+        // Trans-eQTL
+        else if (studyType == 2) 
+        { 
+            $('#igvDiv').empty(); // Remove contents of igvDiv (cis eqtls)
+            var igvDiv = document.getElementById("igvDiv"); 
+            igvDiv.style.visibility = "hidden";
+
+            //$('#eqtlDataDiv').empty(); // Remove eqtl details 
+
+            var transDiv = document.getElementById("transDiv");
+            $('#transDiv').empty(); // Remove contents of transDiv (trans eqtls)
+            $('#geneDataDiv').remove(); //remove Gene Data
+            $('#eqtlDataDiv').remove(); // Remove eqtl details
+            
+            if(transDiv === null) 
+                createTransDiv();
+
+            if(gene == "")
+                gene = "all";
+            
+            if(operation == 2 || operation == 0)
+            {
+                var plotRow = document.getElementById("plotRow"); 
+                plotRow.style.visibility = "visible";
+                
+                var plotCol = document.getElementById("plotCol");
+                plotCol.style.height = "50px";
+
+                var manplot = document.getElementById("manPlot");
+                manplot.style.height = "40px";
+
+                var filterCol = document.getElementById("filterCol"); 
+                filterCol.style.height = "45px";
+                filterCol.style.visibility = "visible";
+            }
+
+            if(operation == 1)
+            {
+
+                var filterRow = document.getElementById("filterRow"); 
+                    filterRow.style.height = "0px";
+                    filterRow.style.visibility = "hidden";
+
+                var filterCol = document.getElementById("filterCol"); 
+                    filterCol.style.height = "0px";
+                    filterCol.style.visibility = "hidden";
+
+                var plotRow = document.getElementById("plotRow");
+                    plotRow.style.height = "0px";
+                    plotRow.style.visibility = "hidden";
+
+                $('#transDiv').empty(); // Remove contents of transDiv (trans eqtls)
+                $('#geneDataDiv').remove(); //remove Gene Data
+                $('#eqtlDataDiv').remove(); // Remove eqtl details
+            }
+
+            var vizRow = document.getElementById("transRow"); 
+            vizRow.style.visibility = "visible";
+
+            //Add All Trans-eqtl Results
+            addTrans(gene);
+           
+            //dataCheck(gene, transData);
+        }
+
+        //datasetvalues = [];
+    }
+
+
+    function searchGene() 
+    {
         geneData = []; //reset geneData
         currenti = 0;
         currentj = 49;
@@ -4673,20 +5208,20 @@ div.tooltip {
     {
         var totalTrans = 0;
         transData = [];
-        var toggle11 = 0, toggle13 = 0, toggle15 = 0, toggle16 = 0, toggle17 = 0, toggle18 = 0, toggle19 = 0, toggle24 = 0, toggle25 = 0, toggle26 = 0, toggle34 = 0, toggle41 = 0, toggle51 = 0, toggle61 = 0, toggle62 = 0, toggle63 = 0, toggle81 = 0, toggle111 = 0, toggle112 = 0, toggle113 = 0, toggle211 = 0, toggle212 = 0, toggle213 = 0, toggle221 = 0, toggle224 = 0, toggle225 = 0, toggle302 = 0, toggle401 = 0, toggle402 = 0, toggle403 = 0;
+        var toggle001 = 0, toggle11 = 0, toggle13 = 0, toggle15 = 0, toggle16 = 0, toggle17 = 0, toggle18 = 0, toggle19 = 0, toggle24 = 0, toggle25 = 0, toggle26 = 0, toggle34 = 0, toggle41 = 0, toggle51 = 0, toggle61 = 0, toggle62 = 0, toggle63 = 0, toggle81 = 0, toggle111 = 0, toggle112 = 0, toggle113 = 0, toggle211 = 0, toggle212 = 0, toggle213 = 0, toggle221 = 0, toggle224 = 0, toggle225 = 0, toggle302 = 0, toggle401 = 0, toggle402 = 0, toggle403 = 0, toggle791 = 0, toggle396 = 0, toggle94 = 0, toggle99 = 0, toggle131 = 0, toggle133 = 0, toggle134 = 0, toggle135 = 0;
         
         var geneArray = gene.trim().split(/\s*,\s*/);
         var geneSetData = [];
         
         var file11 = [];
-        var file15 = [];
+        //var file15 = [];
 
-        var file13 ="NA", file16 ="NA", file17 ="NA", file18 ="NA", file19 ="NA", file24 ="NA", file25 ="NA", file26 ="NA", file34 ="NA", file41 ="NA", file51 ="NA", file61 ="NA", file62 ="NA", file63 ="NA", file81 ="NA", file111 ="NA", file112 ="NA", file113 ="NA", file211 ="NA", file212 ="NA", file213 ="NA", file221 ="NA", file224 ="NA", file225 ="NA", file302 ="NA", file401 ="NA", file402 ="NA", file403 ="NA";
+        var file001 = "NA", file13 ="NA", file15 ="NA", file16 ="NA", file17 ="NA", file18 ="NA", file19 ="NA", file24 ="NA", file25 ="NA", file26 ="NA", file34 ="NA", file41 ="NA", file51 ="NA", file61 ="NA", file62 ="NA", file63 ="NA", file81 ="NA", file111 ="NA", file112 ="NA", file113 ="NA", file211 ="NA", file212 ="NA", file213 ="NA", file221 ="NA", file224 ="NA", file225 ="NA", file302 ="NA", file401 ="NA", file402 ="NA", file403 ="NA", file791 ="NA", file396 ="NA", file94 ="NA",file99 ="NA", file131 ="NA", file133 ="NA", file134 ="NA", file135 ="NA";
 
         for (var i = 0; i < 30; i++)
         {
             file11[i] = "NA"; //Framingham
-            file15[i] = "NA"; //Pierce
+            //file15[i] = "NA"; //Pierce
         }
  
         var getCsv = function (csvUrl) {
@@ -4718,6 +5253,12 @@ div.tooltip {
                     file11[j] = "./data/fram_trans/" + geneArray[j];
             }
                 
+            else if(datasetvalues[i] == 001)
+            {              
+                toggle001 = 1;
+                file001 = "./data/2020/Lung-trans.txt";
+            }
+
             else if(datasetvalues[i] == 13)
             {              
                 toggle13 = 1;
@@ -4728,8 +5269,9 @@ div.tooltip {
             {
                 toggle15 = 1;
 
-                for(var j = 0; j < geneArray.length; j++)
-                    file15[j] = "./data/pierce/trans/" + geneArray[j];
+                file15 = "./data/pierce/pierce-trans-2020.txt";
+                //for(var j = 0; j < geneArray.length; j++)
+                  //  file15[j] = "./data/pierce/trans/" + geneArray[j];
             }
 
             else if(datasetvalues[i] == 16)
@@ -4894,16 +5436,70 @@ div.tooltip {
                 toggle403 = 1;
                 file403 = "./data/hipc/zikv/zika-conv-trans.txt";
             }
+
+            else if(datasetvalues[i] == 791)
+            {
+                toggle791 = 1;
+                file791 = "./data/2020/alspac-trans.txt";
+            }
+
+            else if(datasetvalues[i] == 396)
+            {
+                toggle396 = 1;
+                file396 = "./data/2021/estonia-cd4-trans.txt";
+            }
+
+            else if(datasetvalues[i] == 94)
+            {
+                toggle94 = 1;
+                file94 = "./data/2021/estonia-cd8-trans.txt";
+            }
+
+            else if(datasetvalues[i] == 99)
+            {
+                toggle99 = 1;
+                file99 = "./data/2021/pat-baseline-trans.txt";
+            }
+
+            else if(datasetvalues[i] == 131)
+            {
+                toggle131 = 1;
+                file131 = "./data/2021/pat-lps-trans.txt";
+            }
+
+            else if(datasetvalues[i] == 133)
+            {
+                toggle133 = 1;
+                file133 = "./data/2021/pat-flu-trans.txt";
+            }
+
+            else if(datasetvalues[i] == 134)
+            {
+                toggle134 = 1;
+                file134 = "./data/2021/pat-re-flu-trans.txt";
+            }
+
+            else if(datasetvalues[i] == 135)
+            {
+                toggle135 = 1;
+                file135 = "./data/2021/pat-ifnb-trans.txt";
+            }
         }
         
-        //No Framingham; No Pierce
-        if(toggle11 == 0 && toggle15 == 0)
+        //No Framingham
+        if(toggle11 == 0)
         {
-            $.when( getCsv(file13), getCsv(file16), getCsv(file17), getCsv(file18), getCsv(file19), getCsv(file24), getCsv(file25), getCsv(file26), getCsv(file34), getCsv(file41), getCsv(file51), getCsv(file61), getCsv(file62), getCsv(file63), getCsv(file81), getCsv(file111), getCsv(file112), getCsv(file113), getCsv(file211), getCsv(file212), getCsv(file213), getCsv(file221), getCsv(file224), getCsv(file225), getCsv(file302), getCsv(file401), getCsv(file402), getCsv(file403)
-                    ).done(function (res13, res16, res17, res18, res19, res24, res25, res26, res34, res41, res51, res61, res62, res63, res81, res111, res112, res113, res211, res212, res213, res221, res224, res225, res302, res401, res402, res403) { 
+            $.when( getCsv(file001), getCsv(file13), getCsv(file15), getCsv(file16), getCsv(file17), getCsv(file18), getCsv(file19), getCsv(file24), getCsv(file25), getCsv(file26), getCsv(file34), getCsv(file41), getCsv(file51), getCsv(file61), getCsv(file62), getCsv(file63), getCsv(file81), getCsv(file111), getCsv(file112), getCsv(file113), getCsv(file211), getCsv(file212), getCsv(file213), getCsv(file221), getCsv(file224), getCsv(file225), getCsv(file302), getCsv(file401), getCsv(file402), getCsv(file403), getCsv(file791), getCsv(file396), getCsv(file94), getCsv(file99), getCsv(file131), getCsv(file133), getCsv(file134), getCsv(file135)
+                    ).done(function (res001, res13, res15, res16, res17, res18, res19, res24, res25, res26, res34, res41, res51, res61, res62, res63, res81, res111, res112, res113, res211, res212, res213, res221, res224, res225, res302, res401, res402, res403, res791, res396, res94, res99, res131, res133, res134, res135) { 
                      
+                        if(toggle001 == 1)
+                            transData.push(res001);
+
                         if(toggle13 == 1)
-                            transData.push(res13);                 
+                            transData.push(res13); 
+
+                        if(toggle15 == 1)
+                            transData.push(res15);                
 
                         if(toggle16 == 1)
                             transData.push(res16);
@@ -4985,6 +5581,30 @@ div.tooltip {
 
                         if(toggle403 == 1)
                             transData.push(res403);
+
+                        if(toggle791 == 1)
+                            transData.push(res791);
+
+                        if(toggle396 == 1)
+                            transData.push(res396);
+
+                        if(toggle94 == 1)
+                            transData.push(res94);
+
+                        if(toggle99 == 1)
+                            transData.push(res99);
+
+                        if(toggle131 == 1)
+                            transData.push(res131);
+
+                        if(toggle133 == 1)
+                            transData.push(res133);
+
+                        if(toggle134 == 1)
+                            transData.push(res134);
+
+                        if(toggle135 == 1)
+                            transData.push(res135);
                         
                         if(gwasRead == 0)
                         {
@@ -5066,17 +5686,17 @@ div.tooltip {
             }
 
 
-            // YES Framingham; NO Pierce
-            else if (toggle11 == 1 && toggle15 == 0)
+            // YES Framingham
+            else if (toggle11 == 1)
             {
                 $.when(
                 getCsv(file11[0]), getCsv(file11[1]), getCsv(file11[2]), getCsv(file11[3]), getCsv(file11[4]), getCsv(file11[5]), getCsv(file11[6]), getCsv(file11[7]), getCsv(file11[8]), getCsv(file11[9]), getCsv(file11[10]), getCsv(file11[11]), getCsv(file11[12]), getCsv(file11[13]), getCsv(file11[14]), getCsv(file11[15]), getCsv(file11[16]), getCsv(file11[17]), getCsv(file11[18]), getCsv(file11[19]), getCsv(file11[20]), getCsv(file11[21]), getCsv(file11[22]), getCsv(file11[23]), getCsv(file11[24]), getCsv(file11[25]), getCsv(file11[26]), getCsv(file11[27]), getCsv(file11[28]), getCsv(file11[29]), 
                     
-                getCsv(file13), 
+                getCsv(file001), getCsv(file13), getCsv(file15),
 
-                    getCsv(file16), getCsv(file17), getCsv(file18), getCsv(file19), getCsv(file24), getCsv(file25), getCsv(file26), getCsv(file34), getCsv(file41), getCsv(file51), getCsv(file61), getCsv(file62), getCsv(file63), getCsv(file81), getCsv(file111), getCsv(file112), getCsv(file113), getCsv(file211), getCsv(file212), getCsv(file213), getCsv(file221), getCsv(file224), getCsv(file225), getCsv(file302), getCsv(file401), getCsv(file402), getCsv(file403)
+                    getCsv(file16), getCsv(file17), getCsv(file18), getCsv(file19), getCsv(file24), getCsv(file25), getCsv(file26), getCsv(file34), getCsv(file41), getCsv(file51), getCsv(file61), getCsv(file62), getCsv(file63), getCsv(file81), getCsv(file111), getCsv(file112), getCsv(file113), getCsv(file211), getCsv(file212), getCsv(file213), getCsv(file221), getCsv(file224), getCsv(file225), getCsv(file302), getCsv(file401), getCsv(file402), getCsv(file403), getCsv(file791), getCsv(file396), getCsv(file94), getCsv(file99), getCsv(file131), getCsv(file133), getCsv(file134), getCsv(file135)
                 
-                ).done(function (res11_1, res11_2, res11_3, res11_4, res11_5, res11_6, res11_7, res11_8, res11_9, res11_10, res11_11, res11_12, res11_13, res11_14, res11_15, res11_16, res11_17, res11_18, res11_19, res11_20, res11_21, res11_22, res11_23, res11_24, res11_25, res11_26, res11_27, res11_28, res11_29, res11_30, res13, res16, res17, res18, res19, res24, res25, res26, res34, res41, res51, res61, res62, res63, res81, res111, res112, res113, res211, res212, res213, res221, res224, res225, res302, res401, res402, res403) { 
+                ).done(function (res11_1, res11_2, res11_3, res11_4, res11_5, res11_6, res11_7, res11_8, res11_9, res11_10, res11_11, res11_12, res11_13, res11_14, res11_15, res11_16, res11_17, res11_18, res11_19, res11_20, res11_21, res11_22, res11_23, res11_24, res11_25, res11_26, res11_27, res11_28, res11_29, res11_30, res001, res13, res15, res16, res17, res18, res19, res24, res25, res26, res34, res41, res51, res61, res62, res63, res81, res111, res112, res113, res211, res212, res213, res221, res224, res225, res302, res401, res402, res403, res791, res396, res94, res99, res131, res133, res134, res135) { 
 
                     if(toggle11 == 1)
                     {
@@ -5186,8 +5806,14 @@ div.tooltip {
                             transData.push(res11_30);
                     }
 
+                    if(toggle001 == 1)
+                        transData.push(res001);
+
                     if(toggle13 == 1)
                         transData.push(res13);
+
+                    if(toggle15 == 1)
+                        transData.push(res15);
 
                     if(toggle16 == 1)
                         transData.push(res16);
@@ -5269,7 +5895,30 @@ div.tooltip {
 
                     if(toggle403 == 1)
                         transData.push(res403);
+
+                    if(toggle791 == 1)
+                        transData.push(res791);
+
+                    if(toggle396 == 1)
+                        transData.push(res396);
+
+                    if(toggle94 == 1)
+                        transData.push(res94);
+
+                    if(toggle99 == 1)
+                        transData.push(res99);
                     
+                    if(toggle131 == 1)
+                        transData.push(res131);
+
+                    if(toggle133 == 1)
+                        transData.push(res133);
+
+                    if(toggle134 == 1)
+                        transData.push(res134);
+
+                    if(toggle135 == 1)
+                        transData.push(res135);
 
                     if(gwasRead == 0)
                     {
@@ -5349,691 +5998,12 @@ div.tooltip {
                     }
                 });
             }
-
-
-            // NO Framingham; YES Pierce
-            else if (toggle11 == 0 && toggle15 == 1)
-            {
-                $.when(                  
-                    getCsv(file13), 
-                    
-                    getCsv(file15[0]), getCsv(file15[1]), getCsv(file15[2]), getCsv(file15[3]), getCsv(file15[4]), getCsv(file15[5]), getCsv(file15[6]), getCsv(file15[7]), getCsv(file15[8]), getCsv(file15[9]), getCsv(file15[10]), getCsv(file15[11]), getCsv(file15[12]), getCsv(file15[13]), getCsv(file15[14]), getCsv(file15[15]), getCsv(file15[16]), getCsv(file15[17]), getCsv(file15[18]), getCsv(file15[19]), getCsv(file15[20]), getCsv(file15[21]), getCsv(file15[22]), getCsv(file15[23]), getCsv(file15[24]), getCsv(file15[25]), getCsv(file15[26]), getCsv(file15[27]), getCsv(file15[28]), getCsv(file15[29]), 
-
-                    getCsv(file16), getCsv(file17), getCsv(file18), getCsv(file19), getCsv(file24), getCsv(file25), getCsv(file26), getCsv(file34), getCsv(file41), getCsv(file51), getCsv(file61), getCsv(file62), getCsv(file63), getCsv(file81), getCsv(file111), getCsv(file112), getCsv(file113), getCsv(file211), getCsv(file212), getCsv(file213), getCsv(file221), getCsv(file224), getCsv(file225), getCsv(file302), getCsv(file401), getCsv(file402), getCsv(file403)
-                
-                ).done(function (res13, res15_1, res15_2, res15_3, res15_4, res15_5, res15_6, res15_7, res15_8, res15_9, res15_10, res15_11, res15_12, res15_13, res15_14, res15_15, res15_16, res15_17, res15_18, res15_19, res15_20, res15_21, res15_22, res15_23, res15_24, res15_25, res15_26, res15_27, res15_28, res15_29, res15_30, res16, res17, res18, res19, res24, res25, res26, res34, res41, res51, res61, res62, res63, res81, res111, res112, res113, res211, res212, res213, res221, res224, res225, res302, res401, res402, res403) { 
-
-                    if(toggle13 == 1)
-                        transData.push(res13);
-
-                    if(toggle15 == 1)
-                    {
-                        if(res15_1 != undefined){
-                            transData.push(res15_1);
-                        }
-
-                        if(res15_2 != undefined)
-                            transData.push(res15_2);
-
-                        if(res15_3 != undefined){
-                            transData.push(res15_3);
-                        }
-
-                        if(res15_4 != undefined)
-                            transData.push(res15_4);
-
-                        if(res15_5 != undefined){
-                            transData.push(res15_5);
-                        }
-
-                        if(res15_6 != undefined)
-                            transData.push(res15_6);
-
-                        if(res15_7 != undefined){
-                            transData.push(res15_7);
-                        }
-
-                        if(res15_8 != undefined)
-                            transData.push(res15_8);
-
-                        if(res15_9 != undefined){
-                            transData.push(res15_9);
-                        }
-
-                        if(res15_10 != undefined)
-                            transData.push(res15_10);
-
-                        if(res15_11 != undefined){
-                            transData.push(res15_11);
-                        }
-
-                        if(res15_12 != undefined)
-                            transData.push(res15_12);
-
-                        if(res15_13 != undefined){
-                            transData.push(res15_13);
-                        }
-
-                        if(res15_14 != undefined)
-                            transData.push(res15_14);
-
-                        if(res15_15 != undefined){
-                            transData.push(res15_15);
-                        }
-
-                        if(res15_16 != undefined)
-                            transData.push(res15_16);
-
-                        if(res15_17 != undefined){
-                            transData.push(res15_17);
-                        }
-
-                        if(res15_18 != undefined)
-                            transData.push(res15_18);
-
-                        if(res15_19 != undefined){
-                            transData.push(res15_19);
-                        }
-
-                        if(res15_20 != undefined)
-                            transData.push(res15_20);
-
-                        if(res15_21 != undefined){
-                            transData.push(res15_21);
-                        }
-
-                        if(res15_22 != undefined)
-                            transData.push(res15_22);
-
-                        if(res15_23 != undefined){
-                            transData.push(res15_23);
-                        }
-
-                        if(res15_24 != undefined)
-                            transData.push(res15_24);
-
-                        if(res15_25 != undefined){
-                            transData.push(res15_25);
-                        }
-
-                        if(res15_26 != undefined)
-                            transData.push(res15_26);
-
-                        if(res15_27 != undefined){
-                            transData.push(res15_27);
-                        }
-
-                        if(res15_28 != undefined)
-                            transData.push(res15_28);
-
-                        if(res15_29 != undefined){
-                            transData.push(res15_29);
-                        }
-
-                        if(res15_30 != undefined)
-                            transData.push(res15_30);
-                    }
-
-                    if(toggle16 == 1)
-                        transData.push(res16);
-
-                    if(toggle17 == 1)
-                        transData.push(res17);
-
-                    if(toggle18 == 1)
-                        transData.push(res18);
-
-                    if(toggle19 == 1)
-                        transData.push(res19);
-
-                    if(toggle24 == 1)
-                        transData.push(res24);
-
-                    if(toggle25 == 1)
-                        transData.push(res25);
-
-                    if(toggle26 == 1)
-                        transData.push(res26);
-
-                    if(toggle34 == 1)
-                        transData.push(res34);
-
-                    if(toggle41 == 1)
-                        transData.push(res41);
-
-                    if(toggle51 == 1)
-                        transData.push(res51);
-
-                    if(toggle61 == 1)
-                        transData.push(res61);
-
-                    if(toggle62 == 1)
-                        transData.push(res62);
-
-                    if(toggle63 == 1)
-                        transData.push(res63);
-
-                    if(toggle81 == 1)
-                        transData.push(res81);
-
-                    if(toggle111 == 1)
-                        transData.push(res111);
-
-                    if(toggle112 == 1)
-                        transData.push(res112);
-
-                    if(toggle113 == 1)
-                        transData.push(res113);
-
-                    if(toggle211 == 1)
-                        transData.push(res211);
-
-                    if(toggle212 == 1)
-                        transData.push(res212);
-
-                    if(toggle213 == 1)
-                        transData.push(res213);
-
-                    if(toggle221 == 1)
-                        transData.push(res221);
-
-                    if(toggle224 == 1)
-                        transData.push(res224);
-
-                    if(toggle225 == 1)
-                        transData.push(res225);
-
-                    if(toggle302 == 1)
-                        transData.push(res302);
-
-                    if(toggle401 == 1)
-                        transData.push(res);
-
-                    if(toggle402 == 1)
-                        transData.push(res);
-
-                    if(toggle403 == 1)
-                        transData.push(res);
-                    
-
-                    if(gwasRead == 0)
-                    {
-                        $.when(
-                            getCsv("./data/gwas.txt") 
-                        ).done(function (res1) {
-                            gwasData.push(res1);
-                            gwasRead = 1;
-
-                            if(geneArray.length > 1)
-                            {
-                                //Union operation
-                                if(operation == 2)                                                  
-                                    dataCheck(transData, gene, geneArray);
-                             
-                                // Intersection Operation
-                                else 
-                                {
-                                    for(var i = 0; i < transData.length; i++) {
-                                        for(var j = 0; j < transData[i].length; j++) {
-                                            if(geneSnpToggle == 1) {
-                                                if( isInArray(transData[i][j].SNPName, geneArray) )
-                                                    geneSetData.push(transData[i][j]);
-                                            }
-                                            
-                                            else if(geneSnpToggle == 0) {
-                                                if( isInArray(transData[i][j].Gene, geneArray) )
-                                                    geneSetData.push(transData[i][j]);  
-                                            }
-                                        }
-                                    }  
-                                    
-                                    calcCommonTrans(geneSetData);
-                                }
-                            }
-
-                            else
-                                dataCheck(transData, gene, geneArray);
-                        
-                        }).fail(function (err) {
-                            console.log(err);
-                        });
-
-                    }
-                    
-                    else
-                    {
-                        if(geneArray.length > 1)
-                        {
-                            //Union operation
-                            if(operation == 2)                                                  
-                                dataCheck(transData, gene, geneArray);
-                         
-                            // Intersection Operation
-                            else 
-                            {
-                                for(var i = 0; i < transData.length; i++) {
-                                    for(var j = 0; j < transData[i].length; j++) {
-                                        if(geneSnpToggle == 1) {
-                                            if( isInArray(transData[i][j].SNPName, geneArray) )
-                                                geneSetData.push(transData[i][j]);
-                                        }
-                                        
-                                        else if(geneSnpToggle == 0) {
-                                            if( isInArray(transData[i][j].Gene, geneArray) )
-                                                geneSetData.push(transData[i][j]);  
-                                        }
-                                    }
-                                }  
-                                
-                                calcCommonTrans(geneSetData);
-                            }
-                        }
-
-                        else
-                            dataCheck(transData, gene, geneArray);
-                    }
-                });
-
-            }
-
-            // YES Framingham; YES Pierce
-            else if (toggle11 == 1 && toggle15 == 1)
-            {
-                $.when(
-                    getCsv(file11[0]), getCsv(file11[1]), getCsv(file11[2]), getCsv(file11[3]), getCsv(file11[4]), getCsv(file11[5]), getCsv(file11[6]), getCsv(file11[7]), getCsv(file11[8]), getCsv(file11[9]), getCsv(file11[10]), getCsv(file11[11]), getCsv(file11[12]), getCsv(file11[13]), getCsv(file11[14]), getCsv(file11[15]), getCsv(file11[16]), getCsv(file11[17]), getCsv(file11[18]), getCsv(file11[19]), getCsv(file11[20]), getCsv(file11[21]), getCsv(file11[22]), getCsv(file11[23]), getCsv(file11[24]), getCsv(file11[25]), getCsv(file11[26]), getCsv(file11[27]), getCsv(file11[28]), getCsv(file11[29]), 
-                    
-                    getCsv(file13), 
-                    
-                    getCsv(file15[0]), getCsv(file15[1]), getCsv(file15[2]), getCsv(file15[3]), getCsv(file15[4]), getCsv(file15[5]), getCsv(file15[6]), getCsv(file15[7]), getCsv(file15[8]), getCsv(file15[9]), getCsv(file15[10]), getCsv(file15[11]), getCsv(file15[12]), getCsv(file15[13]), getCsv(file15[14]), getCsv(file15[15]), getCsv(file15[16]), getCsv(file15[17]), getCsv(file15[18]), getCsv(file15[19]), getCsv(file15[20]), getCsv(file15[21]), getCsv(file15[22]), getCsv(file15[23]), getCsv(file15[24]), getCsv(file15[25]), getCsv(file15[26]), getCsv(file15[27]), getCsv(file15[28]), getCsv(file15[29]), 
-
-                    getCsv(file16), getCsv(file17), getCsv(file18), getCsv(file19), getCsv(file24), getCsv(file25), getCsv(file26), getCsv(file34), getCsv(file41), getCsv(file51), getCsv(file61), getCsv(file62), getCsv(file63), getCsv(file81), getCsv(file111), getCsv(file112), getCsv(file113), getCsv(file211), getCsv(file212), getCsv(file213), getCsv(file221), getCsv(file224), getCsv(file225), getCsv(file302), getCsv(file401), getCsv(file402), getCsv(file403)
-                
-                ).done(function (res11_1, res11_2, res11_3, res11_4, res11_5, res11_6, res11_7, res11_8, res11_9, res11_10, res11_11, res11_12, res11_13, res11_14, res11_15, res11_16, res11_17, res11_18, res11_19, res11_20, res11_21, res11_22, res11_23, res11_24, res11_25, res11_26, res11_27, res11_28, res11_29, res11_30, res13, res15_1, res15_2, res15_3, res15_4, res15_5, res15_6, res15_7, res15_8, res15_9, res15_10, res15_11, res15_12, res15_13, res15_14, res15_15, res15_16, res15_17, res15_18, res15_19, res15_20, res15_21, res15_22, res15_23, res15_24, res15_25, res15_26, res15_27, res15_28, res15_29, res15_30, res16, res17, res18, res19, res24, res25, res26, res34, res41, res51, res61, res62, res63, res81, res111, res112, res113, res211, res212, res213, res221, res224, res225, res302, res401, res402, res403) { 
-
-                    if(toggle11 == 1)
-                    {
-                        if(res11_1 != undefined){
-                            transData.push(res11_1);
-                        }
-
-                        if(res11_2 != undefined)
-                            transData.push(res11_2);
-
-                        if(res11_3 != undefined){
-                            transData.push(res11_3);
-                        }
-
-                        if(res11_4 != undefined)
-                            transData.push(res11_4);
-
-                        if(res11_5 != undefined){
-                            transData.push(res11_5);
-                        }
-
-                        if(res11_6 != undefined)
-                            transData.push(res11_6);
-
-                        if(res11_7 != undefined){
-                            transData.push(res11_7);
-                        }
-
-                        if(res11_8 != undefined)
-                            transData.push(res11_8);
-
-                        if(res11_9 != undefined){
-                            transData.push(res11_9);
-                        }
-
-                        if(res11_10 != undefined)
-                            transData.push(res11_10);
-
-                        if(res11_11 != undefined){
-                            transData.push(res11_11);
-                        }
-
-                        if(res11_12 != undefined)
-                            transData.push(res11_12);
-
-                        if(res11_13 != undefined){
-                            transData.push(res11_13);
-                        }
-
-                        if(res11_14 != undefined)
-                            transData.push(res11_14);
-
-                        if(res11_15 != undefined){
-                            transData.push(res11_15);
-                        }
-
-                        if(res11_16 != undefined)
-                            transData.push(res11_16);
-
-                        if(res11_17 != undefined){
-                            transData.push(res11_17);
-                        }
-
-                        if(res11_18 != undefined)
-                            transData.push(res11_18);
-
-                        if(res11_19 != undefined){
-                            transData.push(res11_19);
-                        }
-
-                        if(res11_20 != undefined)
-                            transData.push(res11_20);
-
-                        if(res11_21 != undefined){
-                            transData.push(res11_21);
-                        }
-
-                        if(res11_22 != undefined)
-                            transData.push(res11_22);
-
-                        if(res11_23 != undefined){
-                            transData.push(res11_23);
-                        }
-
-                        if(res11_24 != undefined)
-                            transData.push(res11_24);
-
-                        if(res11_25 != undefined){
-                            transData.push(res11_25);
-                        }
-
-                        if(res11_26 != undefined)
-                            transData.push(res11_26);
-
-                        if(res11_27 != undefined){
-                            transData.push(res11_27);
-                        }
-
-                        if(res11_28 != undefined)
-                            transData.push(res11_28);
-
-                        if(res11_29 != undefined){
-                            transData.push(res11_29);
-                        }
-
-                        if(res11_30 != undefined)
-                            transData.push(res11_30);
-                    }
-
-                    if(toggle13 == 1)
-                        transData.push(res13);
-
-                    if(toggle15 == 1)
-                    {
-                        if(res15_1 != undefined){
-                            transData.push(res15_1);
-                        }
-
-                        if(res15_2 != undefined)
-                            transData.push(res15_2);
-
-                        if(res15_3 != undefined){
-                            transData.push(res15_3);
-                        }
-
-                        if(res15_4 != undefined)
-                            transData.push(res15_4);
-
-                        if(res15_5 != undefined){
-                            transData.push(res15_5);
-                        }
-
-                        if(res15_6 != undefined)
-                            transData.push(res15_6);
-
-                        if(res15_7 != undefined){
-                            transData.push(res15_7);
-                        }
-
-                        if(res15_8 != undefined)
-                            transData.push(res15_8);
-
-                        if(res15_9 != undefined){
-                            transData.push(res15_9);
-                        }
-
-                        if(res15_10 != undefined)
-                            transData.push(res15_10);
-
-                        if(res15_11 != undefined){
-                            transData.push(res15_11);
-                        }
-
-                        if(res15_12 != undefined)
-                            transData.push(res15_12);
-
-                        if(res15_13 != undefined){
-                            transData.push(res15_13);
-                        }
-
-                        if(res15_14 != undefined)
-                            transData.push(res15_14);
-
-                        if(res15_15 != undefined){
-                            transData.push(res15_15);
-                        }
-
-                        if(res15_16 != undefined)
-                            transData.push(res15_16);
-
-                        if(res15_17 != undefined){
-                            transData.push(res15_17);
-                        }
-
-                        if(res15_18 != undefined)
-                            transData.push(res15_18);
-
-                        if(res15_19 != undefined){
-                            transData.push(res15_19);
-                        }
-
-                        if(res15_20 != undefined)
-                            transData.push(res15_20);
-
-                        if(res15_21 != undefined){
-                            transData.push(res15_21);
-                        }
-
-                        if(res15_22 != undefined)
-                            transData.push(res15_22);
-
-                        if(res15_23 != undefined){
-                            transData.push(res15_23);
-                        }
-
-                        if(res15_24 != undefined)
-                            transData.push(res15_24);
-
-                        if(res15_25 != undefined){
-                            transData.push(res15_25);
-                        }
-
-                        if(res15_26 != undefined)
-                            transData.push(res15_26);
-
-                        if(res15_27 != undefined){
-                            transData.push(res15_27);
-                        }
-
-                        if(res15_28 != undefined)
-                            transData.push(res15_28);
-
-                        if(res15_29 != undefined){
-                            transData.push(res15_29);
-                        }
-
-                        if(res15_30 != undefined)
-                            transData.push(res15_30);
-                    }
-
-                    if(toggle16 == 1)
-                        transData.push(res16);
-
-                    if(toggle17 == 1)
-                        transData.push(res17);
-
-                    if(toggle18 == 1)
-                        transData.push(res18);
-
-                    if(toggle19 == 1)
-                        transData.push(res19);
-
-                    if(toggle24 == 1)
-                        transData.push(res24);
-
-                    if(toggle25 == 1)
-                        transData.push(res25);
-
-                    if(toggle26 == 1)
-                        transData.push(res26);
-
-                    if(toggle34 == 1)
-                        transData.push(res34);
-
-                    if(toggle41 == 1)
-                        transData.push(res41);
-
-                    if(toggle51 == 1)
-                        transData.push(res51);
-
-                    if(toggle61 == 1)
-                        transData.push(res61);
-
-                    if(toggle62 == 1)
-                        transData.push(res62);
-
-                    if(toggle63 == 1)
-                        transData.push(res63);
-
-                    if(toggle81 == 1)
-                        transData.push(res81);
-
-                    if(toggle111 == 1)
-                        transData.push(res111);
-
-                    if(toggle112 == 1)
-                        transData.push(res112);
-
-                    if(toggle113 == 1)
-                        transData.push(res113);
-
-                    if(toggle211 == 1)
-                        transData.push(res211);
-
-                    if(toggle212 == 1)
-                        transData.push(res212);
-
-                    if(toggle213 == 1)
-                        transData.push(res213);
-
-                    if(toggle221 == 1)
-                        transData.push(res221);
-
-                    if(toggle224 == 1)
-                        transData.push(res224);
-
-                    if(toggle225 == 1)
-                        transData.push(res225);
-
-                    if(toggle302 == 1)
-                        transData.push(res302);
-
-                    if(toggle401 == 1)
-                        transData.push(res401);
-
-                    if(toggle402 == 1)
-                        transData.push(res402);
-
-                    if(toggle403 == 1)
-                        transData.push(res403);
-                    
-
-                    if(gwasRead == 0)
-                    {
-                        $.when(
-                            getCsv("./data/gwas.txt") 
-                        ).done(function (res1) {
-                            gwasData.push(res1);
-                            gwasRead = 1;
-
-                            if(geneArray.length > 1)
-                            {
-                                //Union operation
-                                if(operation == 2)                                                  
-                                    dataCheck(transData, gene, geneArray);
-                             
-                                // Intersection Operation
-                                else 
-                                {
-                                    for(var i = 0; i < transData.length; i++) {
-                                        for(var j = 0; j < transData[i].length; j++) {
-                                            if(geneSnpToggle == 1) {
-                                                if( isInArray(transData[i][j].SNPName, geneArray) )
-                                                    geneSetData.push(transData[i][j]);
-                                            }
-                                            
-                                            else if(geneSnpToggle == 0) {
-                                                if( isInArray(transData[i][j].Gene, geneArray) )
-                                                    geneSetData.push(transData[i][j]);  
-                                            }
-                                        }
-                                    }  
-                                    
-                                    calcCommonTrans(geneSetData);
-                                }
-                            }
-
-                            else
-                                dataCheck(transData, gene, geneArray);
-                        
-                        }).fail(function (err) {
-                            console.log(err);
-                        });
-
-                    }
-                    
-                    else
-                    {
-                        if(geneArray.length > 1)
-                        {
-                            //Union operation
-                            if(operation == 2)                                                  
-                                dataCheck(transData, gene, geneArray);
-                         
-                            // Intersection Operation
-                            else 
-                            {
-                                for(var i = 0; i < transData.length; i++) {
-                                    for(var j = 0; j < transData[i].length; j++) {
-                                        if(geneSnpToggle == 1) {
-                                            if( isInArray(transData[i][j].SNPName, geneArray) )
-                                                geneSetData.push(transData[i][j]);
-                                        }
-                                        
-                                        else if(geneSnpToggle == 0) {
-                                            if( isInArray(transData[i][j].Gene, geneArray) )
-                                                geneSetData.push(transData[i][j]);  
-                                        }
-                                    }
-                                }  
-                                
-                                calcCommonTrans(geneSetData);
-                            }
-                        }
-
-                        else
-                            dataCheck(transData, gene, geneArray);
-                    }
-                });
-        }
 
     }
 
 
-    function addG() {
+    function addG() 
+    {
         var btn = document.getElementById("wBtn");
         btn.className = "btn btn-primary active btn-block"; 
         btn.style.background = "lightgray";
@@ -6047,7 +6017,8 @@ div.tooltip {
     }
     
 
-    function dataCheck(data, gene, geneArray) {
+    function dataCheck(data, gene, geneArray) 
+    {
         //var sliced = data.slice(i,j);
         geneData = [];
 
@@ -6185,7 +6156,6 @@ div.tooltip {
         vizDiv.appendChild(saveButtonsClone);
 
         saveButtonsClone.style.visibility = "visible";
-
     }
 
 
@@ -6412,7 +6382,6 @@ div.tooltip {
 
     function saveCisPDF() 
     {
-
         html2canvas($("#igvDiv"), {
             onrendered: function(canvas) {
                 $('#container').html("");
@@ -6426,7 +6395,6 @@ div.tooltip {
                 pdf.save('cisEQTLs.pdf');
             }
         });
-
     }
     
 
@@ -6555,8 +6523,7 @@ div.tooltip {
                 }
             }
           
-        }
-        
+        }        
     }
 
 
@@ -6936,10 +6903,7 @@ div.tooltip {
                     }
 
                 }
-            }
-
-            
-            
+            }          
     }
 
 
@@ -6956,7 +6920,6 @@ div.tooltip {
 
     function geneSetTrans(frequency, source) 
     {
-
         var sourceArr = [], geneArr = [], fullArr = [], obj = {}, genes, seenGenes = [];
         var transNode = document.getElementById("transDiv");
         var geneSetNode = document.getElementById("geneSetDiv");
@@ -7059,7 +7022,7 @@ div.tooltip {
         //draw in 'transDiv'
         var viz = d3.select('#transDiv');
         
-        wdth = 620; //610
+        wdth = 635; //610
         
         var gene = document.getElementById("geneVal").value;
         var lastChar = gene.substr(gene.length - 1);
@@ -7100,14 +7063,14 @@ div.tooltip {
                         .domain([1, topP]) 
                         .range([hght - 10,10]); 
         
-        var y = d3.scale.linear()
-                        //.base(Math.E)
-                        .domain([1e-5, topP])
+        var y = d3.scale.log()
+                        .domain([1e-5, 100])
                         .range([hght - 10, 0]);
+
 
         var yAxis = d3.svg.axis()
                         .scale(yScale)                      
-                        .tickFormat(function(d) { return "e" + Math.round(Math.log(d)); })
+                        .tickFormat(function(d) { return "e" + Math.round(Math.log10(d)); })
                         .orient("left")
                         .tickValues([1e-100,1e-80,1e-40,1e-20])
                         .ticks(8)
@@ -7135,11 +7098,16 @@ div.tooltip {
 
                             else if(plot == 2) 
                             {
-                                var chrStartInd = [45, 95, 143, 183, 211, 257, 291, 323, 352, 380, 407, 434, 461, 484, 505, 525, 543, 560, 576, 588, 601, 610];
+                                var chrStartInd = [45, 95, 143, 183, 211, 257, 291, 323, 352, 380, 407, 434, 461, 484, 505, 525, 543, 560, 576, 588, 601, 610, 620];
                                 
                                 if(geneSnpToggle == 0)
-                                    return chrStartInd[d.SNPChr - 1] + (d.SNPChrPos / 5000000);
-
+                                {
+                                    if(d.SNPChr == 'X' || d.SNPChr == 'Y')
+                                        return chrStartInd[22] + (d.SNPChrPos / 5000000);
+                                    else
+                                        return chrStartInd[d.SNPChr - 1] + (d.SNPChrPos / 5000000);
+                                }
+                                    
                                 else
                                     return chrStartInd[d.ProbeChr - 1] + (d.ProbeCenterChrPos / 5000000);
                             }
@@ -7299,10 +7267,15 @@ div.tooltip {
             svg.selectAll(".circle")   // change the line
                 .duration(750)
                 .attr('cx', function (d, i) {         
-                    var chrStartInd = [45, 95, 143, 183, 211, 257, 291, 323, 352, 380, 407, 434, 461, 484, 505, 525, 543, 560, 576, 588, 601, 610]; 
+                    var chrStartInd = [45, 95, 143, 183, 211, 257, 291, 323, 352, 380, 407, 434, 461, 484, 505, 525, 543, 560, 576, 588, 601, 610, 620]; 
                     
                     if(geneSnpToggle == 0)
-                        return chrStartInd[d.SNPChr - 1] + (d.SNPChrPos / 5000000);
+                    {
+                        if(d.SNPChr == 'X' || d.SNPChr == 'Y')
+                            return chrStartInd[22] + (d.SNPChrPos / 5000000);
+                        else
+                            return chrStartInd[d.SNPChr - 1] + (d.SNPChrPos / 5000000);
+                    }
 
                     else
                         return chrStartInd[d.ProbeChr - 1] + (d.ProbeCenterChrPos / 5000000);
@@ -7314,8 +7287,8 @@ div.tooltip {
             document.getElementById("manPlot").style.width = "220px";
 
             var xScale = d3.scale.linear()
-                        .domain([1, 600]) 
-                        .range([0,600]);
+                        .domain([1, 620]) 
+                        .range([0,620]);
         
 
             var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickValues([2, 70, 118, 158, 196, 232, 266, 298, 327, 355, 382, 409, 436, 459, 480, 500, 518, 535, 551, 563, 574, 585,600]).tickFormat(function(n, i) { return i+1 }).tickSize(5);
@@ -7506,6 +7479,30 @@ div.tooltip {
                     if(remaining == 0)
                         drawCisTracks(datasetvalues); 
                 });
+            }
+
+            else if (datasetvalues[i] == 001) {
+                    cisData001 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 002) {
+                    cisData002 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 003) {
+                    cisData003 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
             }
 
             //GTEx dataset
@@ -8470,6 +8467,224 @@ div.tooltip {
                 });                 
             }
 
+            // Datasets added in July 2020
+
+            else if (datasetvalues[i] == 396) {
+                    cisData396 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 94) {
+                    cisData94 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+           /* else if (datasetvalues[i] == 191) {
+                    cisData191 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            } */
+
+            else if (datasetvalues[i] == 291) {
+                    cisData291 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 292) {
+                    cisData292 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 293) {
+                    cisData293 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 397) {
+                    cisData397 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 95) {
+                    cisData95 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 43) {
+                    cisData43 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 96) {
+                    cisData96 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 97) {
+                    cisData97 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 98) {
+                    cisData98 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 990) {
+                    cisData990 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 294) {
+                    cisData294 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 64) {
+                    cisData64 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 65) {
+                    cisData65 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 66) {
+                    cisData66 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 67) {
+                    cisData67 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 68) {
+                    cisData68 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 69) {
+                    cisData69 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 99) {
+                    cisData99 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 131) {
+                    cisData131 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 132) {
+                    cisData132 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 133) {
+                    cisData133 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 134) {
+                    cisData134 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 135) {
+                    cisData135 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
+            else if (datasetvalues[i] == 136) {
+                    cisData136 = {};
+                    remaining--;
+                    
+                    if(remaining == 0)
+                        drawCisTracks(datasetvalues);
+            }
+
             //Study does not have cis-eqtl data
             else
                 remaining--;
@@ -8501,6 +8716,28 @@ div.tooltip {
                     if(cisData11[j].GENE == gene ) 
                     {
                         obj = {source: "11", snp: cisData11[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 001) {
+                for(var j = 0; j < cisData001.length; j++)
+                {
+                    if(cisData001[j].GENE == gene ) 
+                    {
+                        obj = {source: "001", snp: cisData001[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 003) {
+                for(var j = 0; j < cisData003.length; j++)
+                {
+                    if(cisData003[j].GENE == gene ) 
+                    {
+                        obj = {source: "003", snp: cisData003[j].SNP}
                         geneCis.push(obj);
                     }
                 }
@@ -9497,6 +9734,305 @@ div.tooltip {
                 }
             }
 
+            // Datasets added in July 2020
+
+            else if(datasetvalues[i] == 396) {
+                for(var j = 0; j < cisData396.length; j++)
+                {
+                    if(cisData396[j].GENE == gene ) 
+                    {
+                        obj = {source: "396", snp: cisData396[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 94) {
+                for(var j = 0; j < cisData94.length; j++)
+                {
+                    if(cisData94[j].GENE == gene ) 
+                    {
+                        obj = {source: "94", snp: cisData94[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            /* else if(datasetvalues[i] == 191) {
+                for(var j = 0; j < cisData191.length; j++)
+                {
+                    if(cisData191[j].GENE == gene ) 
+                    {
+                        obj = {source: "191", snp: cisData191[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            } */
+
+            else if(datasetvalues[i] == 291) {
+                for(var j = 0; j < cisData291.length; j++)
+                {
+                    if(cisData291[j].GENE == gene ) 
+                    {
+                        obj = {source: "291", snp: cisData291[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 292) {
+                for(var j = 0; j < cisData292.length; j++)
+                {
+                    if(cisData292[j].GENE == gene ) 
+                    {
+                        obj = {source: "292", snp: cisData292[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 293) {
+                for(var j = 0; j < cisData293.length; j++)
+                {
+                    if(cisData293[j].GENE == gene ) 
+                    {
+                        obj = {source: "293", snp: cisData293[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 397) {
+                for(var j = 0; j < cisData397.length; j++)
+                {
+                    if(cisData397[j].GENE == gene ) 
+                    {
+                        obj = {source: "397", snp: cisData397[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 95) {
+                for(var j = 0; j < cisData95.length; j++)
+                {
+                    if(cisData95[j].GENE == gene ) 
+                    {
+                        obj = {source: "95", snp: cisData95[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 43) {
+                for(var j = 0; j < cisData43.length; j++)
+                {
+                    if(cisData43[j].GENE == gene ) 
+                    {
+                        obj = {source: "43", snp: cisData43[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 96) {
+                for(var j = 0; j < cisData96.length; j++)
+                {
+                    if(cisData96[j].GENE == gene ) 
+                    {
+                        obj = {source: "96", snp: cisData96[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 97) {
+                for(var j = 0; j < cisData97.length; j++)
+                {
+                    if(cisData97[j].GENE == gene ) 
+                    {
+                        obj = {source: "97", snp: cisData97[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 98) {
+                for(var j = 0; j < cisData98.length; j++)
+                {
+                    if(cisData98[j].GENE == gene ) 
+                    {
+                        obj = {source: "98", snp: cisData98[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 990) {
+                for(var j = 0; j < cisData990.length; j++)
+                {
+                    if(cisData990[j].GENE == gene ) 
+                    {
+                        obj = {source: "990", snp: cisData990[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 294) {
+                for(var j = 0; j < cisData294.length; j++)
+                {
+                    if(cisData294[j].GENE == gene ) 
+                    {
+                        obj = {source: "294", snp: cisData294[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 64) {
+                for(var j = 0; j < cisData64.length; j++)
+                {
+                    if(cisData64[j].GENE == gene ) 
+                    {
+                        obj = {source: "64", snp: cisData64[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 65) {
+                for(var j = 0; j < cisData65.length; j++)
+                {
+                    if(cisData65[j].GENE == gene ) 
+                    {
+                        obj = {source: "65", snp: cisData65[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 66) {
+                for(var j = 0; j < cisData66.length; j++)
+                {
+                    if(cisData66[j].GENE == gene ) 
+                    {
+                        obj = {source: "66", snp: cisData66[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 67) {
+                for(var j = 0; j < cisData67.length; j++)
+                {
+                    if(cisData67[j].GENE == gene ) 
+                    {
+                        obj = {source: "67", snp: cisData67[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 68) {
+                for(var j = 0; j < cisData68.length; j++)
+                {
+                    if(cisData68[j].GENE == gene ) 
+                    {
+                        obj = {source: "68", snp: cisData68[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 69) {
+                for(var j = 0; j < cisData69.length; j++)
+                {
+                    if(cisData69[j].GENE == gene ) 
+                    {
+                        obj = {source: "69", snp: cisData69[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 99) {
+                for(var j = 0; j < cisData99.length; j++)
+                {
+                    if(cisData99[j].GENE == gene ) 
+                    {
+                        obj = {source: "99", snp: cisData99[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 131) {
+                for(var j = 0; j < cisData131.length; j++)
+                {
+                    if(cisData131[j].GENE == gene ) 
+                    {
+                        obj = {source: "131", snp: cisData131[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 132) {
+                for(var j = 0; j < cisData132.length; j++)
+                {
+                    if(cisData132[j].GENE == gene ) 
+                    {
+                        obj = {source: "132", snp: cisData132[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 133) {
+                for(var j = 0; j < cisData133.length; j++)
+                {
+                    if(cisData133[j].GENE == gene ) 
+                    {
+                        obj = {source: "133", snp: cisData133[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 134) {
+                for(var j = 0; j < cisData134.length; j++)
+                {
+                    if(cisData134[j].GENE == gene ) 
+                    {
+                        obj = {source: "134", snp: cisData134[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 135) {
+                for(var j = 0; j < cisData135.length; j++)
+                {
+                    if(cisData135[j].GENE == gene ) 
+                    {
+                        obj = {source: "135", snp: cisData135[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
+            else if(datasetvalues[i] == 136) {
+                for(var j = 0; j < cisData136.length; j++)
+                {
+                    if(cisData136[j].GENE == gene ) 
+                    {
+                        obj = {source: "136", snp: cisData136[j].SNP}
+                        geneCis.push(obj);
+                    }
+                }
+            }
+
            
         }
 
@@ -9526,10 +10062,64 @@ div.tooltip {
                                     label: 'Framingham'});
             }
 
+            else if(datasetvalues[i] == 001) {
+                igv.browser.loadTrack({
+                                    url: './data/2020/Lung-cis-sorted.txt.gz', 
+                                    indexURL: './data/2020/Lung-cis-sorted.txt.gz.tbi', 
+                                    name: 'Lung <br/> European <br/> Meta-analysis', 
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [5e-8, 5e-4, 0.05],
+                                        colors:['rgb(30,144,255)']
+                                    },
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'Lung'});
+            }
+
+            else if(datasetvalues[i] == 002) {
+                igv.browser.loadTrack({
+                                    url: './data/2020/gtex-Lung.txt.gz', 
+                                    indexURL: './data/2020/gtex-Lung.txt.gz.tbi', 
+                                    name: 'Lung <br/> Mixed <br/> GTEx', 
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [5e-8, 5e-4, 0.05],
+                                        colors:['rgb(30,144,255)']
+                                    },
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'GTEx-Lung'});
+            }
+
+            else if(datasetvalues[i] == 003) {
+                igv.browser.loadTrack({
+                                    url: './data/2020/gtex-Prostate.txt.gz', 
+                                    indexURL: './data/2020/gtex-Prostate.txt.gz.tbi', 
+                                    name: 'Prostate <br/> Mixed <br/> GTEx', 
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [5e-8, 5e-4, 0.05],
+                                        colors:['rgb(30,144,255)']
+                                    },
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'GTEx-Prostate'});
+            }
+
             else if(datasetvalues[i] == 12) {
                 igv.browser.loadTrack({
-                                    url: './data/gtex-sorted.txt.gz',
-                                    indexURL: './data/gtex-sorted.txt.gz.tbi',
+                                    url: './data/2020/gtex-Blood.txt.gz',   // v6: './data/gtex-sorted.txt.gz',
+                                    indexURL: './data/2020/gtex-Blood.txt.gz.tbi',  // v6: './data/gtex-sorted.txt.gz.tbi',
                                     name: 'Whole Blood <br/> Mixed <br/> GTEx', 
                                     format: 'gtexGWAS',
                                     sourceType: 'file',
@@ -9584,8 +10174,8 @@ div.tooltip {
 
             else if(datasetvalues[i] == 15) {
                 igv.browser.loadTrack({
-                                    url: './data/pierce/pierce-cis-temp-sorted.txt.gz',
-                                    indexURL: './data/pierce/pierce-cis-temp-sorted.txt.gz.tbi',
+                                    url: './data/pierce/pierce-cis-sorted.txt.gz',
+                                    indexURL: './data/pierce/pierce-cis-sorted.txt.gz.tbi',
                                     name: 'Whole Blood <br/> East Asian <br/> PLoS Genetics',
                                     format: 'gtexGWAS',
                                     sourceType: 'file',
@@ -9593,8 +10183,9 @@ div.tooltip {
                                     colorScale: {
                                         thresholds: [],
                                         colors:['rgb(30,144,255)']
-                                    },                                 
-                                    maxLogP: 16,
+                                    }, 
+                                    minLogP: 10,                                
+                                    maxLogP: 40,
                                     height: 150,
                                     commonCis: CommonCisData,
                                     label: 'Pierce'});
@@ -11215,6 +11806,476 @@ div.tooltip {
                                     height: 150,
                                     commonCis: CommonCisData,
                                     label: 'ZIKV-Conv'});
+            }
+
+            // Datasets added in July 2020
+
+            else if(datasetvalues[i] == 396) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/estonia-CD4-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/estonia-CD4-cis-sorted.txt.gz.tbi',
+                                    name: 'CD4+ T-Cells <br/> European <br/> Estonian Biobank',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'cd4T-European-Estonia'});
+            }
+
+            else if(datasetvalues[i] == 94) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/estonia-CD8-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/estonia-CD8-cis-sorted.txt.gz.tbi',
+                                    name: 'CD8+ T-Cells <br/> European <br/> Estonian Biobank',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'cd8T-European-Estonia'});
+            }
+
+            else if(datasetvalues[i] == 291) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/lifelines-mono-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/lifelines-mono-cis-sorted.txt.gz.tbi',
+                                    name: 'Monocytes <br/> European <br/> Lifelines (single-cell)',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'Mono-European-Lifelines(sc)'});
+            }
+
+            else if(datasetvalues[i] == 292) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/lifelines-cmono-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/lifelines-cmono-cis-sorted.txt.gz.tbi',
+                                    name: 'Monocytes - classical <br/> European <br/> Lifelines (single-cell)',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'cMono-European-Lifelines(sc)'});
+            }
+
+            else if(datasetvalues[i] == 293) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/lifelines-ncmono-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/lifelines-ncmono-cis-sorted.txt.gz.tbi',
+                                    name: 'Monocytes - non-classical <br/> European <br/> Lifelines (single-cell)',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'ncMono-European-Lifelines(sc)'});
+            }
+
+            else if(datasetvalues[i] == 397) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/lifelines-cd4-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/lifelines-cd4-cis-sorted.txt.gz.tbi',
+                                    name: 'CD4+ T-Cells <br/> European <br/> Lifelines (single-cell)',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'cd4T-European-Lifelines(sc)'});
+            }
+
+            else if(datasetvalues[i] == 95) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/lifelines-cd8-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/lifelines-cd8-cis-sorted.txt.gz.tbi',
+                                    name: 'CD8+ T-Cells <br/> European <br/> Lifelines (single-cell)',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'cd8T-European-Lifelines(sc)'});
+            }
+
+            else if(datasetvalues[i] == 43) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/lifelines-bcells-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/lifelines-bcells-cis-sorted.txt.gz.tbi',
+                                    name: 'B-Cells <br/> European <br/> Lifelines (single-cell)',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'bcells-European-Lifelines(sc)'});
+            }
+
+            else if(datasetvalues[i] == 96) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/lifelines-nk-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/lifelines-nk-cis-sorted.txt.gz.tbi',
+                                    name: 'NK Cells <br/> European <br/> Lifelines (single-cell)',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'nk-European-Lifelines(sc)'});
+            }
+
+            else if(datasetvalues[i] == 97) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/lifelines-pbmc-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/lifelines-pbmc-cis-sorted.txt.gz.tbi',
+                                    name: 'PBMC <br/> European <br/> Lifelines (single-cell)',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'pbmc-European-Lifelines(sc)'});
+            }
+
+            else if(datasetvalues[i] == 98) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/lifelines-dend-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/lifelines-dend-cis-sorted.txt.gz.tbi',
+                                    name: 'Dendritic Cells <br/> European <br/> Lifelines (single-cell)',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'DC-European-Lifelines(sc)'});
+            }
+
+            else if(datasetvalues[i] == 990) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/ss-mdm-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/ss-mdm-cis-sorted.txt.gz.tbi',
+                                    name: 'MDMs <br/> Mixed <br/> Systemic Sclerosis',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'MDM-Mixed-SS'});
+            }
+
+            else if(datasetvalues[i] == 294) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/impop-ctrl-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/impop-ctrl-cis-sorted.txt.gz.tbi',
+                                    name: 'Monocytes <br/> European <br/> ImmunPop',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'Mono-European-ImmunPop'});
+            }
+
+            else if(datasetvalues[i] == 64) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/impop-lps90h-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/impop-lps90h-cis-sorted.txt.gz.tbi',
+                                    name: 'Monocytes <br/> European <br/> LPS-90mins',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'Mono-European-LPS90'});
+            }
+
+            else if(datasetvalues[i] == 65) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/impop-lps6h-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/impop-lps6h-cis-sorted.txt.gz.tbi',
+                                    name: 'Monocytes <br/> European <br/> LPS-6hours',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'Mono-European-LPS6h'});
+            }
+
+            else if(datasetvalues[i] == 66) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/impop-mdp90h-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/impop-mdp90h-cis-sorted.txt.gz.tbi',
+                                    name: 'Monocytes <br/> European <br/> MDP-90mins',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'Mono-European-MDP90'});
+            }
+
+            else if(datasetvalues[i] == 67) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/impop-mdp6h-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/impop-mdp6h-cis-sorted.txt.gz.tbi',
+                                    name: 'Monocytes <br/> European <br/> MDP-6hours',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'Mono-European-MDP6h'});
+            }
+
+            else if(datasetvalues[i] == 68) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/impop-rna90h-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/impop-rna90h-cis-sorted.txt.gz.tbi',
+                                    name: 'Monocytes <br/> European <br/> RNA-90mins',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'Mono-European-RNA90'});
+            }
+
+            else if(datasetvalues[i] == 69) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/impop-rna6h-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/impop-rna6h-cis-sorted.txt.gz.tbi',
+                                    name: 'Monocytes <br/> European <br/> RNA-6hours',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'Mono-European-RNA6h'});
+            }
+
+            else if(datasetvalues[i] == 99) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/pat-baseline-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/pat-baseline-cis-sorted.txt.gz.tbi',
+                                    name: 'Dendritic Cells <br/> Mixed',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'Dend-Mixed'});
+            }
+
+            else if(datasetvalues[i] == 131) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/pat-lps-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/pat-lps-cis-sorted.txt.gz.tbi',
+                                    name: 'Dendritic Cells <br/> Mixed <br/> LPS',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'Dend-Mixed-LPS'});
+            }
+
+            else if(datasetvalues[i] == 132) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/pat-re-lps-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/pat-re-lps-cis-sorted.txt.gz.tbi',
+                                    name: 'Dendritic Cells <br/> Mixed <br/> LPS (reQTLs)',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'Dend-Mixed-LPSre'});
+            }
+
+            else if(datasetvalues[i] == 133) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/pat-flu-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/pat-flu-cis-sorted.txt.gz.tbi',
+                                    name: 'Dendritic Cells <br/> Mixed <br/> Influenza',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'Dend-Mixed-FLU'});
+            }
+
+            else if(datasetvalues[i] == 134) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/pat-re-flu-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/pat-re-flu-cis-sorted.txt.gz.tbi',
+                                    name: 'Dendritic Cells <br/> Mixed <br/> Influenza (reQTLs)',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'Dend-Mixed-FLUre'});
+            }
+
+            else if(datasetvalues[i] == 135) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/pat-ifnb-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/pat-ifnb-cis-sorted.txt.gz.tbi',
+                                    name: 'Dendritic Cells <br/> Mixed <br/> IFNbeta',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'Dend-Mixed-IFNb'});
+            }
+
+            else if(datasetvalues[i] == 136) {                
+                igv.browser.loadTrack({
+                                    url: './data/2021/pat-re-ifnb-cis-sorted.txt.gz',
+                                    indexURL: './data/2021/pat-re-ifnb-cis-sorted.txt.gz.tbi',
+                                    name: 'Dendritic Cells <br/> Mixed <br/> IFNbeta (reQTLs)',
+                                    format: 'gtexGWAS',
+                                    sourceType: 'file',
+                                    type: 'gwas',
+                                    colorScale: {
+                                        thresholds: [],
+                                        colors:['rgb(30,144,255)']
+                                    },                                  
+                                    maxLogP: 16,
+                                    height: 150,
+                                    commonCis: CommonCisData,
+                                    label: 'Dend-Mixed-IFNbre'});
             }
            
 

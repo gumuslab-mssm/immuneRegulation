@@ -281,11 +281,14 @@ div.tooltip {
 .bar {
   fill: lightsteelblue;
   stroke: gray;
+
 }
 
 .bar:hover {
   fill: steelblue ;
-  stroke: black;
+  stroke: red;
+  stroke-width: 1;
+
 }
 
 .indbar {
@@ -295,6 +298,9 @@ div.tooltip {
 
 .indbar:hover {
   fill: orange ;
+  stroke: red;
+  stroke-width: 1;
+
 }
 
 .d3-tip {
@@ -347,7 +353,7 @@ div.tooltip {
         } );
     } );
 
-    var datafile = "./data/meta-cis/meta-cis-Jan2020.txt";
+    var datafile = "./data/meta-cis/meta-cis-Sep2020.txt";
     var datasetsArr = [];
     var cisMeta = [];
 
@@ -361,21 +367,154 @@ div.tooltip {
     
     d3.tsv(datafile, function(data) {
         vizMeta(data);
+
+        // Process Meta search if Gene passed by URL
+        var searchText = window.location.search;
+        var searchGene = searchText.split("=")[1];
+        
+        if(searchText != "")
+            submitMetaURL(searchGene);
+
     });
 
     //TRANS
-    var Tdatafile = "./data/meta-trans/meta-trans-Jan2020.txt";
+    var Tdatafile = "./data/meta-trans/meta-trans-Sep2020.txt"; //meta-trans-Sep2020.txt
     var TdatasetsArr = [];
     var transMeta = [];
+
+    var TDData = [];
+    var TDFile = [];
+    var TDGene = "";
 
     d3.tsv("./data/meta-trans/datasets.txt", function(data) {
         TdatasetsArr.push(data); 
     });
 
     
-    d3.json(Tdatafile, function(data) {
+    d3.tsv(Tdatafile, function(data) {
         TvizMeta(data);
+
+        // Process Meta search if Gene passed by URL
+        var searchText = window.location.search;
+        var searchGene = searchText.split("=")[1];
+        
+        if(searchText != "")
+            submitMetaURL(searchGene);
     });
+
+    // If GENE is passed by URL; run this
+    function submitMetaURL(URLgene)
+    {
+        var gene = URLgene;
+        
+        var geneArray = gene.split(',');
+
+        if(geneArray[geneArray.length-1] == "")
+            geneArray.pop();
+        
+        if(geneArray.length == 0)
+        {
+            var extraGeneDiv = document.getElementById("extraGene");
+            extraGeneDiv.style.visibility = "visible";
+            return true;
+        }
+
+        else
+        {
+            var extraGeneDiv = document.getElementById("extraGene");
+            extraGeneDiv.style.visibility = "hidden";
+
+            var allGraphics = document.getElementById("allGraphics");
+            allGraphics.style.visibility = "visible";
+        }
+
+        var searchData = [];
+
+        for(var i = 0; i < geneArray.length; i++)
+        {
+            var genelookup = _.filter(cisMeta, function(d) {return d.g == geneArray[i]});
+            
+            if(genelookup != undefined)
+                searchData.push(genelookup);
+        }
+        
+        var viz = d3.select('#chart4');
+        d3.select("#chart4-svg").remove();
+
+        var viz = d3.select('#chart5');
+        d3.select("#chart5-svg").remove();
+
+        var viz = d3.select('#chart6');
+        d3.select("#chart6-svg").remove();
+
+        createGeneGraphics(searchData);
+        //createSnpGraphics(searchData);
+        createCellGraphics(searchData);
+
+        // Generate TRANS Graphs...
+        TsubmitMetaURL(gene);
+
+        document.getElementById("geneVal").value = gene;
+    }  
+
+    // If GENE is passed by URL; run this
+    function TsubmitMetaURL(URLgene)
+    {
+        var gene = URLgene;
+        
+        var geneArray = gene.split(',');
+
+        if(geneArray[geneArray.length-1] == "")
+            geneArray.pop();
+        
+        if(geneArray.length == 0)
+        {
+            var extraGeneDiv = document.getElementById("extraGene");
+            extraGeneDiv.style.visibility = "visible";
+            return true;
+        }
+
+        else
+        {
+            var extraGeneDiv = document.getElementById("extraGene");
+            extraGeneDiv.style.visibility = "hidden";
+
+            var allGraphics = document.getElementById("allGraphics");
+            allGraphics.style.visibility = "visible";
+        }
+
+        var searchData = [];
+
+        for(var i = 0; i < geneArray.length; i++)
+        {
+            var genelookup = _.filter(transMeta, function(d) {return d.Gene == geneArray[i]});
+            //console.log('AAAA:', genelookup);
+
+            if(genelookup != undefined)
+                searchData.push(genelookup);
+        }
+        
+        var viz = d3.select('#Tchart4');
+        d3.select("#Tchart4-svg").remove();
+
+        var viz = d3.select('#Tchart5');
+        d3.select("#Tchart5-svg").remove();
+
+        var viz = d3.select('#Tchart6');
+        d3.select("#Tchart6-svg").remove();
+
+        var textarea = document.getElementById("Tchart7-text");
+        textarea.style.visibility = "hidden";
+
+        var textarea = document.getElementById("Tchart9-text");
+        textarea.style.visibility = "hidden";
+
+        TcreateGeneGraphics(searchData);
+        // TcreateSnpGraphics(searchData);
+        TcreateCellGraphics(searchData);
+    }  
+
+
 
     function submitMeta()
     {
@@ -412,7 +551,7 @@ div.tooltip {
         for(var i = 0; i < geneArray.length; i++)
         {
             var genelookup = _.filter(cisMeta, function(d) {return d.g == geneArray[i]});
-            //console.log('AAAA:', genelookup);
+            //console.log('BBBB:', genelookup);
             
             if(genelookup != undefined)
                 searchData.push(genelookup);
@@ -439,6 +578,9 @@ div.tooltip {
         //createSnpGraphics(searchData);
         createCellGraphics(searchData);
 
+        document.getElementById("Tchart70-text").style.visibility = "hidden";
+        document.getElementById("Tchart90-text").style.visibility = "hidden";
+
         // Generate TRANS Graphs...
         TsubmitMeta();
 
@@ -449,7 +591,6 @@ div.tooltip {
     {
         // Convert Data to Array:::
         cisMeta = _.toArray(data);
-        //console.log('ccc:', cisMeta);
     }
 
 
@@ -555,15 +696,22 @@ div.tooltip {
             //.attr("y", function(d) { return yval(getsnpcount(d)); })
             //.attr("height", function(d) { return height - yval(getsnpcount(d)); })
             .on('mouseover', tip.show) //function() { d3.select(this).style('fill', 'steelblue'); tip.show; })
+            //.on('mouseover', function() { d3.select(this).style('fill', 'steelblue'); tip.show; })
+            //.on('mouseout', function(d) { d3.select(this).style('fill', 'lightsteelblue'); tip.hide; })
             .on('mouseout', tip.hide)//function(d) { if( gene_interest != x(d[0].g) )d3.select(this).style('fill', 'lightsteelblue'); tip.hide; })
             
             .on("click", function(d){
                 //var textarea = document.getElementById("chart7-text");
                 //textarea.style.visibility = "hidden";
-               /* gene_interest = x(d[0].g);
+                /* gene_interest = x(d[0].g);
                 d3.selectAll(".bar").style('fill', 'lightsteelblue');
                 d3.select(this).style('fill', 'steelblue'); */
                 indGeneGraphics(data, d);
+
+                //Change color
+                d3.select("#chart1-svg").selectAll(".bar").style('fill', 'lightsteelblue');
+                d3.select(this).style('fill', 'steelblue');
+
             }); 
 
     }
@@ -632,9 +780,7 @@ div.tooltip {
 
         // push the most populous 10 entries to work array
         for(var i = 1; i < initdata.length+1; i++)
-            data.push(sorteddata[sorteddata.length - i]);
-
-        
+            data.push(sorteddata[sorteddata.length - i]); 
         
         //console.log('Data...', data);
         var barheight = (height / data.length) - (20 / data.length);
@@ -690,6 +836,9 @@ div.tooltip {
                 .on('mouseout', tip.hide)                     
                 .on("click", function(d) {
                     //indGeneGraphicsDetails(data, d.f);
+                    //Change color
+                    //d3.select("#chart4-svg").selectAll(".indbar").style('fill', 'bisque');
+                    //d3.select(this).style('fill', 'orange');
                 });
 
         d3.selectAll(".chart4-g")
@@ -711,6 +860,27 @@ div.tooltip {
                     }
                 });
 
+
+        d3.selectAll(".chart4-g")
+            .data(data)
+            .append("text")
+            .attr("x", function(dd) { return width + 160; })
+            .attr("y", function(dd) { return y(dd.f) + barheight / 2; })
+            .attr("dy", ".35em")
+            .attr("fill", "blue")
+            .html(function(dd, i) { 
+                    var link = "'index.html?s=1&g=";
+                    var urlgene = indGene[0].g;
+
+                    var urldataset = dd.f.split("-")[1];
+
+                    link = link + urlgene + "&d=" + urldataset + "'";
+
+                    var fullLink = "<a href=" + link + "target='_blank' style='fill:blue'>Details</a>";
+                    return fullLink;
+                });
+
+
        svg.append("text")
         .attr("x", (width / 2))             
         .attr("y", 0 - (margin.top / 2))
@@ -718,399 +888,9 @@ div.tooltip {
         .style("font-size", "18px") 
         .style("text-decoration", "underline")  
         .text(function(dd) { return "Gene: " + indGene[0].g + " - Cis-eQTL Datasets"; });
-       /* svg.selectAll(".bar")
-            .data(data)
-            .enter().append("rect")
-            .attr("class", "bar")
-            .attr("y", function(dd) { return y(dd.f); })
-            .attr("height", barheight)
-            .attr("x", function(dd) { return 0; })
-            .attr("width", function(dd) { return width - xval(dd.s.length); })
-            .on('mouseover', tip.show)
-            .on('mouseout', tip.hide)                     
-            .on("click", function(d) {
-
-                // indGeneGraphics(searchData);
-            }); */
-            
-            /*svg.selectAll("g")
-            .data(data).append("text")
-              .attr("x", function(dd) { return width - xval(dd.s.length) + 5; })
-              .attr("y", function(dd) { return y(dd.f); })
-              .attr("dy", ".35em")
-              //.html(
-                //     "<strong> Whole Blood :</strong> <span style='color:red'> European American </span>"
-                  //);
-              .html("Whole Blood xx <br/> European American");*/
-              //.text(function(dd) { return dd.f; });
-
 
     }
 
-
-    function indGeneGraphicsDetails(data, file)
-    {
-        var textarea = document.getElementById("chart7-text");
-        textarea.style.visibility = "visible";
-
-        var content = "";
-
-        for(var i = 0; i < data.length; i++)
-        {
-            if(data[i].f == file)
-            {
-                for(var j = 0; j < data[i].s.length; j++)
-                    content += data[i].s[j] + ", ";
-            }
-        }
-        
-        textarea.innerText = content;
-    }
-
-
-    function oldindGeneGraphics(searchData, indGene)
-    {
-        var margin = {top: 10, right: 20, bottom: 30, left: 40},
-            width = 600 - margin.left - margin.right,
-            height = 300 - margin.top - margin.bottom;
-
-        var x = d3.scale.ordinal()
-                .rangeRoundBands([0, width], .1);
-
-        var y = d3.scale.linear()
-                .range([height, 0]);
-
-        var xAxis = d3.svg.axis()
-                    .scale(x)
-                    .orient("bottom");
-
-        var yAxis = d3.svg.axis()
-                    .scale(y)
-                    .orient("left")
-                    .tickFormat(d3.format("d"));
-
-        var tip = d3.tip()
-                  .attr('class', 'd3-tip')
-                  .offset([-10, 0])
-                  .html(function(d) {
-                    return "<strong>"+d.f+":</strong> <span style='color:red'>" + d.s.length + "</span>";
-                  });
-
-        
-        var viz = d3.select('#chart4');
-
-        d3.select("#chart4-svg").remove();
-
-        var svg = viz.append('svg')
-                    .attr("id", "chart4-svg")
-                    .attr("width", width + margin.left + margin.right)
-                    .attr("height", height + margin.top + margin.bottom)
-                    .append("g")
-                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-
-        var data = [];
-
-        for(var i = 0; i < indGene.d.length; i++)
-                data.push(indGene.d[i]);
-        
-        //console.log('Data...', data);
-
-        svg.call(tip);
-
-        //Generate graph...
-        var yval = d3.scale.linear()
-                    .domain([0, d3.max(data, function(dd) { return dd.s.length; })])
-                    .range([height, 0]);
-
-        var xval = d3.scale.ordinal()
-                    .domain(data.map(function(dd) { return dd.f; }))
-                    .range([width/data.length]);
-
-        x.domain(data.map(function(dd) { return dd.f; }));
-        y.domain([0, d3.max(data, function(dd) { return dd.s.length; })]);
-
-        svg.append("g")
-          .attr("class", "x axis")
-          .attr("transform", "translate(0," + height + ")")
-          .style("font-size", "x-small")
-          .call(xAxis);
-
-        svg.append("g")
-          .attr("class", "y axis")
-          .call(yAxis);
-
-
-        svg.selectAll(".bar")
-            .data(data)
-            .enter().append("rect")
-            .attr("class", "bar")
-            .attr("x", function(dd) { return x(dd.f); })
-            .attr("width", width/(data.length+0.5))
-            .attr("y", function(dd) { return yval(dd.s.length); })
-            .attr("height", function(dd) { return height - yval(dd.s.length); })
-            .on('mouseover', tip.show)
-            .on('mouseout', tip.hide)                     
-            .on("click", function(d) {
-
-                // indGeneGraphics(searchData);
-            });
-
-    }
-
-
-
-    function createSnpGraphics(searchData)
-    {
-        var margin = {top: 10, right: 20, bottom: 30, left: 40},
-            width = 600 - margin.left - margin.right,
-            height = 400 - margin.top - margin.bottom;
-
-        var x = d3.scale.ordinal()
-                .rangeRoundBands([0, width], .1);
-
-        var y = d3.scale.linear()
-                .range([height, 0]);
-
-        var xAxis = d3.svg.axis()
-                    .scale(x)
-                    .orient("bottom");
-
-
-        var yAxis = d3.svg.axis()
-                    .scale(y)
-                    .orient("left")
-                    .tickFormat(d3.format("d"));
-
-        var tip = d3.tip()
-                  .attr('class', 'd3-tip')
-                  .offset([-10, 0])
-                  .html(function(d) {
-                    return "<strong>"+d.snp+":</strong> <span style='color:red'>" + d.freq + "</span>";
-                  });
-
-        var viz = d3.select('#chart2');
-
-        d3.select("#chart2-svg").remove();
-
-        var svg = viz.append('svg')
-                    .attr("id", "chart2-svg")
-                    .attr("width", width + margin.left + margin.right)
-                    .attr("height", height + margin.top + margin.bottom)
-                    .append("g")
-                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-        var data = [];
-        var sorteddata = [];
-        var snpfreq = [];
-
-        // sort transMeta based on snp count
-        sorteddata = _.sortBy(searchData, function(dd) { return getsnpcount(dd);  });
-
-        // push the most populous 10 entries to work array
-        for(var i = 1; i < searchData.length+1; i++)
-            data.push(sorteddata[sorteddata.length - i]);
-
-        snpfreq = getsnpfreq(data);
-        console.log('SNP FREQ:', snpfreq);
-
-        svg.call(tip);
-
-        //Generate graph...
-        var yval = d3.scale.linear()
-                    .domain([0, d3.max(snpfreq, function(d) { return d.freq; })])
-                    .range([height, 0]);
-
-        var xval = d3.scale.ordinal()
-                    .domain(snpfreq.map(function(d) { return d.snp; }))
-                    .range([width/snpfreq.length]);
-
-        x.domain(snpfreq.map(function(d) { return d.snp; }));
-        y.domain([0, d3.max(snpfreq, function(d) { return d.freq; })]);
-
-        svg.append("g")
-          .attr("class", "x axis")
-          .attr("transform", "translate(0," + height + ")")
-          .style("font-size", "x-small")
-          .call(xAxis);
-
-        svg.append("g")
-          .attr("class", "y axis")
-          .call(yAxis);
-
-        svg.selectAll(".bar")
-            .data(snpfreq)
-            .enter().append("rect")
-            .attr("class", "bar")
-            .attr("x", function(d) { return x(d.snp); })
-            .attr("width", width/(snpfreq.length+0.5))
-            .attr("y", function(d) { return yval(d.freq); })
-            .attr("height", function(d) { return height - yval(d.freq); })
-            .on('mouseover', tip.show)
-            .on('mouseout', tip.hide)
-            .on("click", function(d) {
-
-                indSNPGraphics(searchData, snpfreq, d.snp);
-            });
-
-    }
-
-
-    function indSNPGraphics(searchData, snpfreq, snp)
-    {
-        var margin = {top: 40, right: 200, bottom: 30, left: 50},
-            width = 650 - margin.left - margin.right,
-            height = 300 - margin.top - margin.bottom;
-
-        var y = d3.scale.ordinal()
-                .rangeRoundBands([0, height], .1);
-
-        var x = d3.scale.linear()
-                .range([0, width]);
-
-        var xAxis = d3.svg.axis()
-                    .scale(x)
-                    .orient("top")
-                    .tickFormat(d3.format("d"));
-
-        var yAxis = d3.svg.axis()
-                    .scale(y)
-                    .orient("left")
-                    .tickFormat(function(d) { return d.split('---')[0]; });
-
-        var tip = d3.tip()
-                  .attr('class', 'd3-tip')
-                  .offset([-10, 0])
-                  .html(function(d) {
-                            for(var i = 0; i < datasetsArr[0].length; i++)
-                            {
-                                if(datasetsArr[0][i].id == d.file)
-                                    return datasetsArr[0][i].cell + "<br/>" + datasetsArr[0][i].ethnicity + " cohort <br/>" + datasetsArr[0][i].subjects + " subjects";
-                            }
-                  });
-
-        
-        var viz = d3.select('#chart5');
-
-        d3.select("#chart5-svg").remove();
-
-        var svg = viz.append('svg')
-                    .attr("id", "chart5-svg")
-                    .attr("width", width + margin.left + margin.right)
-                    .attr("height", height + margin.top + margin.bottom)
-                    .append("g")
-                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-
-        var initdata = [];
-        var procdata = [];
-        var data = [];
-        var sorteddata = [];
-
-        for(var i = 0; i < snpfreq.length; i++)
-            if(snpfreq[i].snp == snp)
-                initdata.push(snpfreq[i].info);
-
-
-        /*for(var i = 0; i < initdata[0].length; i++)
-        {
-            var indproclength = 0;
-            
-            for(var j = 0; j < searchData.length; j++)
-            {
-                if(initdata[0][i].gene == searchData[j].g)
-                {
-                    for(var k = 0; k < searchData[j].d.length; k++)
-                    {
-                        if(initdata[0][i].file == searchData[j].d[k].f)
-                            indproclength = searchData[j].d[k].s.length;
-                    }
-                }
-            }
-            
-            var obj = {gene: initdata[0][i].gene, file:initdata[0][i].file, freq: indproclength};
-            procdata.push(obj);
-        } */
-
-        // sort transMeta based on snp count
-     /*   sorteddata = _.sortBy(procdata, function(dd) { return dd.freq;  });
-
-        // push the most populous 10 entries to work array
-        for(var i = 1; i < procdata.length+1; i++)
-            data.push(sorteddata[sorteddata.length - i]); */
-        console.log('init:::', initdata[0]);
-
-        var barheight = (height / initdata[0].length) - (20 / initdata[0].length);
-        
-        if(initdata[0].length == 1)
-            barheight -= 20;
-
-        svg.call(tip);
-
-        //Generate graph...
-        var yval = d3.scale.linear()
-                    .domain([0, d3.max(initdata[0], function(dd) { return dd.length; })])
-                    .range([height, 0]);
-
-        var xval = d3.scale.linear()
-                    .domain([0, d3.max(initdata[0], function(dd) { return dd.length; })])
-                    .range([width, width]);
-
-        y.domain(initdata[0].map(function(dd) { return dd.gene + "---" + dd.file; }));
-        x.domain([0, d3.max(initdata[0], function(dd) { return dd.length; })]);
-
-        svg.append("g")
-          .attr("class", "x axis")
-          .attr("transform", "translate(0," + 8 + ")")
-          .style("font-size", "small")
-          .call(xAxis);
-
-        svg.append("g")
-          .attr("class", "y axis")
-          .style("font-size", "10px")
-          .call(yAxis);
-
-
-       svg.selectAll(".bar")
-            .data(initdata[0])
-            .enter()
-            .append("g")
-            .attr("class", "chart5-g")
-                .append("rect")
-                .attr("class", "indbar")
-                .attr("y", function(dd) { return y(dd.gene + "---" + dd.file); })
-                .attr("height", barheight)
-                .attr("x", function(dd) { return 0; })
-                .attr("width", function(dd) { return width; })
-                .on('mouseover', tip.show)
-                .on('mouseout', tip.hide)                     
-                .on("click", function(d) {
-                    //indCellGraphicsDetails(data, d.file, d.gene, searchData);
-                });
-
-        d3.selectAll(".chart5-g")
-            .data(initdata[0])
-            .append("text")
-              .attr("x", function(dd) { return width + 5; })
-              .attr("y", function(dd) { return y(dd.gene + "---" + dd.file) + barheight / 2; })
-              .attr("dy", ".35em")
-              .text(function(dd) { 
-                    for(var i = 0; i < datasetsArr[0].length; i++)
-                    {
-                        if(datasetsArr[0][i].id == dd.file)
-                            return datasetsArr[0][i].cell + ", " + datasetsArr[0][i].ethnicity;
-                    }
-                });
-
-       svg.append("text")
-        .attr("x", (width / 2))             
-        .attr("y", 0 - (margin.top / 2))
-        .attr("text-anchor", "middle")  
-        .style("font-size", "18px") 
-        .style("text-decoration", "underline")  
-        .text(function(dd) { return  snp + " - Trans-eQTL Genes & Datasets"; });
-
-    }
 
 
     function createCellGraphics(searchData)
@@ -1166,8 +946,8 @@ div.tooltip {
                 data.push(sorteddata[sorteddata.length - i]);
 
         cellfreq = getcellfreq(data);
-        console.log('Data:', data);
-        console.log('Cell Freq:', cellfreq);
+        //console.log('Data:', data);
+        //console.log('Cell Freq:', cellfreq);
 
         svg.call(tip);
 
@@ -1235,6 +1015,10 @@ div.tooltip {
                 //var textarea = document.getElementById("chart9-text");
                 //textarea.style.visibility = "hidden";
                 indCellGraphics(data, cellfreq, d.cell);
+
+                //Change color
+                d3.select("#chart3-svg").selectAll(".bar").style('fill', 'lightsteelblue');
+                d3.select(this).style('fill', 'steelblue');
             });
 
     }
@@ -1379,7 +1163,7 @@ div.tooltip {
                 .on('mouseover', tip.show)
                 .on('mouseout', tip.hide)                     
                 .on("click", function(d) {
-                    indCellGraphicsDetails(data, d.file, d.gene, searchData);
+                    //indCellGraphicsDetails(data, d.file, d.gene, searchData);
                 });
 
         d3.selectAll(".chart6-g")
@@ -1401,6 +1185,26 @@ div.tooltip {
                     }
                 });
 
+
+        d3.selectAll(".chart6-g")
+            .data(data)
+            .append("text")
+            .attr("x", function(dd) { return width + 160; })
+            .attr("y", function(dd) { return y(dd.gene + "---" + dd.file) + barheight / 2; })
+            .attr("dy", ".35em")
+            .attr("fill", "blue")
+            .html(function(dd, i) { 
+                    var link = "'index.html?s=1&g=";
+                    var urlgene = dd.gene;
+
+                    var urldataset = dd.file.split("-")[1];
+
+                    link = link + urlgene + "&d=" + urldataset + "'";
+
+                    var fullLink = "<a href=" + link + "target='_blank' style='fill:blue'>Details</a>";
+                    return fullLink;
+                });
+
        svg.append("text")
         .attr("x", (width / 2))             
         .attr("y", 0 - (margin.top / 2))
@@ -1409,28 +1213,6 @@ div.tooltip {
         .style("text-decoration", "underline")  
         .text(function(dd) { return  cell + " - Cis-eQTL Genes & Datasets"; });
 
-    }
-
-
-    function indCellGraphicsDetails(data, file, gene, searchData)
-    {
-        var textarea = document.getElementById("chart9-text");
-        textarea.style.visibility = "visible";
-
-        var content = "";
-
-        for(var i = 0; i < searchData.length; i++)
-        {
-            if(searchData[i].g == gene)
-            {
-                for(var j = 0; j < searchData[i].d.length; j++)
-                    if(searchData[i].d[j].f == file)
-                        for(var k = 0; k < searchData[i].d[j].s.length; k++)
-                            content += searchData[i].d[j].s[k] + ", ";
-            }
-        }
-        
-        textarea.innerText = content;
     }
 
 
@@ -1553,45 +1335,13 @@ div.tooltip {
     }
 
 
-    function oldcreateGraphics(transMeta)
-    {
-
-        var width = 820,
-        barHeight = 20;
-
-        var data = [];
-        var sorteddata = [];
-
-        // sort transMeta based on snp count
-        sorteddata = _.sortBy(transMeta, function(dd) { return getsnpcount(dd);  });
-
-        // push the most populous 10 entries to work array
-        for(var i = 1; i < 11; i++)
-            data.push(sorteddata[sorteddata.length - i]);
-
-        console.log('Data...', data);
-
-        //Generate graph...
-        var x = d3.scale.linear()
-                .domain([0, d3.max(data, function(dd) { return getsnpcount(dd); })])
-                .range([0, 820]);
-
-
-        d3.select(".chart")
-          .selectAll("div")
-            .data(data)
-          .enter().append("div")
-            .style("width", function(dd) { return x(getsnpcount(dd)) + "px"; })
-            .text(function(dd) { return dd.g; });
-    }
-
 
     function loadFile(data)
     {
         var genes = [];
         var files = [];
         var allObjects = [];
-        console.log('Length:', data.length);
+        //console.log('Length:', data.length);
 
         for(var i = 0; i < data.length; i++)
         {
@@ -1614,7 +1364,7 @@ div.tooltip {
             }
         }
 
-        console.log('Genes Array:', files);
+        //console.log('Genes Array:', files);
     }
 
 
@@ -1656,7 +1406,7 @@ div.tooltip {
 
         for(var i = 0; i < geneArray.length; i++)
         {
-            var genelookup = _.find(transMeta, function(d) {return d.g == geneArray[i]});
+            var genelookup = _.filter(transMeta, function(d) {return d.Gene == geneArray[i]});
             //console.log('AAAA:', genelookup);
             
             if(genelookup != undefined)
@@ -1690,8 +1440,9 @@ div.tooltip {
     function TvizMeta(data)
     {
         // Convert Data to Array:::
-        transMeta = _.toArray(data);
+        transMeta = _.toArray(data); 
     }
+
 
 
     function TcreateGeneGraphics(searchData)
@@ -1719,7 +1470,7 @@ div.tooltip {
                       .attr('class', 'd3-tip')
                       .offset([-10, 0])
                       .html(function(d) {
-                        return "<strong>"+d.g+":</strong> <span style='color:red'>" + Tgetsnpcount(d) + "</span>";
+                        return "<strong>"+d[0].Gene+":</strong> <span style='color:red'>" + Tgetsnpcount(d) + "</span>";
                       });
 
         
@@ -1741,11 +1492,12 @@ div.tooltip {
         // sort transMeta based on snp count
         sorteddata = _.sortBy(searchData, function(dd) { return Tgetsnpcount(dd);  });
 
+
         // push the most populous 10 entries to work array
         for(var i = 1; i < searchData.length+1; i++)
-            data.push(sorteddata[sorteddata.length - i]);
+            if(sorteddata[sorteddata.length - i].length > 0)
+                data.push(sorteddata[sorteddata.length - i]);
 
-        //console.log('Data...', data);
 
         svg.call(tip);
 
@@ -1755,17 +1507,16 @@ div.tooltip {
                     .range([height, 0]);
 
         var xval = d3.scale.ordinal()
-                    .domain(data.map(function(d) { return d.g; }))
+                    .domain(data.map(function(d) { return d[0].Gene; }))
                     .range([width/searchData.length]);
 
-        x.domain(data.map(function(d) { return d.g; }));
+        x.domain(data.map(function(d) { return d[0].Gene; }));
         y.domain([0, d3.max(data, function(dd) { return Tgetsnpcount(dd); })]);
-        
 
         svg.append("g")
           .attr("class", "x axis")
           .attr("transform", "translate(0," + height + ")")
-          .style("font-size", "medium")
+          .style("font-size", "x-small")
           .call(xAxis);
 
         svg.append("g")
@@ -1773,12 +1524,13 @@ div.tooltip {
           .call(yAxis);
 
 
+
         svg.selectAll(".bar")
             .data(data)
             .enter().append("rect")
             .attr("class", "bar")
-            .attr("x", function(d) { return x(d.g); })
-            .attr("width", width/(searchData.length+0.5))
+            .attr("x", function(d) { return x(d[0].Gene); })
+            .attr("width", width/(data.length+0.5))
             .attr("y", function(d) { 
                 if ( (height - yval(Tgetsnpcount(d))) < 2) 
                     return (height - 2); 
@@ -1793,21 +1545,41 @@ div.tooltip {
                 else 
                     return height - yval(Tgetsnpcount(d)); 
             })
-            //.attr("y", function(d) { return yval(Tgetsnpcount(d)); })
-            //.attr("height", function(d) { return height - yval(Tgetsnpcount(d)); })
             .on('mouseover', tip.show)
             .on('mouseout', tip.hide)
             .on("click", function(d){
                 var textarea = document.getElementById("Tchart7-text");
                 textarea.style.visibility = "hidden";
-                TindGeneGraphics(searchData, d);
+                TindGeneGraphics(searchData, d); //TindGeneGraphics(searchData, d);
+
+                //Change color
+                d3.select("#Tchart1-svg").selectAll(".bar").style('fill', 'lightsteelblue');
+                d3.select(this).style('fill', 'steelblue');
+
+                document.getElementById("Tchart70-text").style.visibility = "visible";
+                
+                    // TD Stuff...
+                    //console.log('XXXXX:', searchData);
+                    //console.log('YYYYY:', cellfreq);
+                    TDData = searchData;
+
+                    var xFile = [];
+                    for(var i = 0; i < d.length; i++)
+                    {
+                        xFile.push(d[i].File);
+                    }
+  
+                    TDFile = [...new Set(xFile)];
+                    TDGene = d[0].Gene;
             });
 
     }
 
 
-    function TindGeneGraphics(searchData, indGene)
+
+    function TindGeneGraphics(data, indGene)
     {
+
         var margin = {top: 40, right: 200, bottom: 30, left: 10},
             width = 650 - margin.left - margin.right,
             height = 250 - margin.top - margin.bottom;
@@ -1833,8 +1605,8 @@ div.tooltip {
                   .html(function(d) {
                     for(var i = 0; i < TdatasetsArr[0].length; i++)
                     {
-                        if(TdatasetsArr[0][i].id == d.f)
-                            return TdatasetsArr[0][i].cell + "<br/>" + TdatasetsArr[0][i].ethnicity + " cohort <br/>" + TdatasetsArr[0][i].subjects + " subjects" + "<br/> <span style='color:red'>" + d.s.length + " trans-eQTLs</span>";
+                        if(TdatasetsArr[0][i].id == d[0].File)
+                            return TdatasetsArr[0][i].cell + "<br/>" + TdatasetsArr[0][i].ethnicity + " cohort <br/>" + TdatasetsArr[0][i].subjects + " subjects" + "<br/> <span style='color:red'>" + d.length + " trans-eQTLs</span>";
                     }
                     //return "<strong>"+d.f+":</strong> <br/> <span style='color:red'>" + d.s.length + "</span>";
                   });
@@ -1853,22 +1625,23 @@ div.tooltip {
 
 
         var initdata = [];
+        var groupdata = [];
         var data = [];
         var sorteddata = [];
 
-        for(var i = 0; i < indGene.d.length; i++)
-            initdata.push(indGene.d[i]);
+        for(var i = 0; i < indGene.length; i++)
+            initdata.push(indGene[i]);
+
+        groupdata = _.toArray(_.groupBy(initdata, 'File'));
 
         // sort transMeta based on snp count
-        sorteddata = _.sortBy(initdata, function(dd) { return dd.s.length;  });
+        sorteddata = _.sortBy(groupdata, function(dd) { return dd.length;  });
 
-        // push the most populous 10 entries to work array
-        for(var i = 1; i < initdata.length+1; i++)
+         // push the most populous 10 entries to work array
+        for(var i = 1; i < groupdata.length+1; i++)
             data.push(sorteddata[sorteddata.length - i]);
 
         
-        
-        //console.log('Data...', data);
         var barheight = (height / data.length) - (20 / data.length);
         
         if(data.length == 1)
@@ -1878,15 +1651,16 @@ div.tooltip {
 
         //Generate graph...
         var yval = d3.scale.linear()
-                    .domain([0, d3.max(data, function(dd) { return dd.s.length; })])
+                    .domain([0, d3.max(data, function(dd, i) { return dd.length; })])
                     .range([height, 0]);
 
         var xval = d3.scale.linear()
-                    .domain([0, d3.max(data, function(dd) { return dd.s.length; })])
+                    .domain([0, d3.max(data, function(dd) { return dd.length; })])
                     .range([width, 0]);
 
-        y.domain(data.map(function(dd) { return dd.f; }));
-        x.domain([0, d3.max(data, function(dd) { return dd.s.length; })]);
+        y.domain(data.map(function(dd) { return dd[0].File; }));
+        x.domain([0, d3.max(data, function(dd) { return dd.length; })]);
+
 
         svg.append("g")
           .attr("class", "x axis")
@@ -1900,53 +1674,82 @@ div.tooltip {
           .call(yAxis);
 
 
-       svg.selectAll(".bar")
+        svg.selectAll(".bar")
             .data(data)
             .enter()
             .append("g")
             .attr("class", "Tchart4-g")
                 .append("rect")
                 .attr("class", "indbar")
-                .attr("y", function(dd) { return y(dd.f); })
+                .attr("y", function(dd) { return y(dd[0].File); })
                 .attr("height", barheight)
                 .attr("x", function(dd) { return 0; })
                 .attr("width", function(dd) { 
-                    if( (width - xval(parseInt(dd.s.length))) < 2) 
+                    if( (width - xval(dd.length)) < 2) 
                         return 2; 
 
                     else 
-                        return width - xval(parseInt(dd.s.length)); 
+                        return width - xval(dd.length); 
                 })
                 //.attr("width", function(dd) { return width - xval(dd.s.length); })
                 .on('mouseover', tip.show)
                 .on('mouseout', tip.hide)                     
                 .on("click", function(d) {
-                    TindGeneGraphicsDetails(data, d.f);
+                    TindGeneGraphicsDetails(data, d[0].File);
+
+                    //Change color
+                    d3.select("#Tchart4-svg").selectAll(".indbar").style('fill', 'bisque');
+                    d3.select(this).style('fill', 'orange');
                 });
+
 
         d3.selectAll(".Tchart4-g")
             .data(data)
             .append("text")
-              .attr("x", function(dd) { return width - xval(dd.s.length) + 5; })
-              .attr("y", function(dd) { return y(dd.f) + barheight / 2; })
+              .attr("x", function(dd) { return width - xval(dd.length) + 5; })
+              .attr("y", function(dd) { return y(dd[0].File) + barheight / 2; })
               .attr("dy", ".35em")
               .text(function(dd) { 
                     for(var i = 0; i < TdatasetsArr[0].length; i++)
                     {
-                        if(TdatasetsArr[0][i].id == dd.f)
+                        if(TdatasetsArr[0][i].id == dd[0].File)
                             return TdatasetsArr[0][i].cell + ", " + TdatasetsArr[0][i].ethnicity;
                     }
                 });
 
-       svg.append("text")
-        .attr("x", (width / 2))             
-        .attr("y", 0 - (margin.top / 2))
-        .attr("text-anchor", "middle")  
-        .style("font-size", "18px") 
-        .style("text-decoration", "underline")  
-        .text(function(dd) { return "Gene: " + indGene.g + " - Trans-eQTL Datasets"; });
+       
+
+        d3.selectAll(".Tchart4-g")
+            .data(data)
+            .append("text")
+            .attr("x", function(dd) { return width + 160; })
+            .attr("y", function(dd) { return y(dd[0].File) + barheight / 2; })
+            .attr("dy", ".35em")
+            .attr("fill", "blue")
+            .html(function(dd, i) { 
+                    var link = "'index.html?s=2&g=";
+                    var urlgene = indGene[0].Gene;
+
+                    var urldataset = dd[0].File.split("-")[1];
+
+                    link = link + urlgene + "&d=" + urldataset + "'";
+
+                    var fullLink = "<a href=" + link + "target='_blank' style='fill:blue'>Details</a>";
+                    return fullLink;
+                });
+
+
+
+        svg.append("text")
+            .attr("x", (width / 2))             
+            .attr("y", 0 - (margin.top / 2))
+            .attr("text-anchor", "middle")  
+            .style("font-size", "18px") 
+            .style("text-decoration", "underline")  
+            .text(function(dd) { return "Gene: " + indGene[0].Gene + " - Trans-eQTL Datasets"; });
 
     }
+
 
 
     function TindGeneGraphicsDetails(data, file)
@@ -1958,105 +1761,14 @@ div.tooltip {
 
         for(var i = 0; i < data.length; i++)
         {
-            if(data[i].f == file)
+            if(data[i][0].File == file)
             {
-                for(var j = 0; j < data[i].s.length; j++)
-                    content += data[i].s[j] + ", ";
+                for(var j = 0; j < data[i].length; j++)
+                    content += data[i][j].SNP + ", ";
             }
         }
         
         textarea.innerText = content;
-    }
-
-
-    function oldTindGeneGraphics(searchData, indGene)
-    {
-        var margin = {top: 10, right: 20, bottom: 30, left: 40},
-            width = 600 - margin.left - margin.right,
-            height = 300 - margin.top - margin.bottom;
-
-        var x = d3.scale.ordinal()
-                .rangeRoundBands([0, width], .1);
-
-        var y = d3.scale.linear()
-                .range([height, 0]);
-
-        var xAxis = d3.svg.axis()
-                    .scale(x)
-                    .orient("bottom");
-
-        var yAxis = d3.svg.axis()
-                    .scale(y)
-                    .orient("left")
-                    .tickFormat(d3.format("d"));
-
-        var tip = d3.tip()
-                  .attr('class', 'd3-tip')
-                  .offset([-10, 0])
-                  .html(function(d) {
-                    return "<strong>"+d.f+":</strong> <span style='color:red'>" + d.s.length + "</span>";
-                  });
-
-        
-        var viz = d3.select('#Tchart4');
-
-        d3.select("#Tchart4-svg").remove();
-
-        var svg = viz.append('svg')
-                    .attr("id", "Tchart4-svg")
-                    .attr("width", width + margin.left + margin.right)
-                    .attr("height", height + margin.top + margin.bottom)
-                    .append("g")
-                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-
-        var data = [];
-
-        for(var i = 0; i < indGene.d.length; i++)
-                data.push(indGene.d[i]);
-        
-        //console.log('Data...', data);
-
-        svg.call(tip);
-
-        //Generate graph...
-        var yval = d3.scale.linear()
-                    .domain([0, d3.max(data, function(dd) { return dd.s.length; })])
-                    .range([height, 0]);
-
-        var xval = d3.scale.ordinal()
-                    .domain(data.map(function(dd) { return dd.f; }))
-                    .range([width/data.length]);
-
-        x.domain(data.map(function(dd) { return dd.f; }));
-        y.domain([0, d3.max(data, function(dd) { return dd.s.length; })]);
-
-        svg.append("g")
-          .attr("class", "x axis")
-          .attr("transform", "translate(0," + height + ")")
-          .style("font-size", "x-small")
-          .call(xAxis);
-
-        svg.append("g")
-          .attr("class", "y axis")
-          .call(yAxis);
-
-
-        svg.selectAll(".bar")
-            .data(data)
-            .enter().append("rect")
-            .attr("class", "bar")
-            .attr("x", function(dd) { return x(dd.f); })
-            .attr("width", width/(data.length+0.5))
-            .attr("y", function(dd) { return yval(dd.s.length); })
-            .attr("height", function(dd) { return height - yval(dd.s.length); })
-            .on('mouseover', tip.show)
-            .on('mouseout', tip.hide)                     
-            .on("click", function(d) {
-
-                // TindGeneGraphics(searchData);
-            });
-
     }
 
 
@@ -2113,7 +1825,7 @@ div.tooltip {
             data.push(sorteddata[sorteddata.length - i]);
 
         snpfreq = Tgetsnpfreq(data);
-        console.log('SNP FREQ:', snpfreq);
+        //console.log('SNP FREQ:', snpfreq);
 
         svg.call(tip);
 
@@ -2213,7 +1925,7 @@ div.tooltip {
                 initdata.push(snpfreq[i].info);
 
 
-        console.log('init:::', initdata[0]);
+        //console.log('init:::', initdata[0]);
 
         var barheight = (height / initdata[0].length) - (20 / initdata[0].length);
         
@@ -2287,6 +1999,8 @@ div.tooltip {
 
     }
 
+
+   
 
     function TcreateCellGraphics(searchData)
     {
@@ -2393,9 +2107,131 @@ div.tooltip {
                 var textarea = document.getElementById("Tchart9-text");
                 textarea.style.visibility = "hidden";
                 TindCellGraphics(searchData, cellfreq, d.cell);
+
+                //Change color
+                d3.select("#Tchart3-svg").selectAll(".bar").style('fill', 'lightsteelblue');
+                d3.select(this).style('fill', 'steelblue');
+                
+                document.getElementById("Tchart90-text").style.visibility = "visible";
+                
+                    // TD Stuff...
+                    //console.log('XXXXX:', searchData);
+                    //console.log('YYYYY:', cellfreq);
+                    TDData = searchData;
+
+                    var xFile = [];
+                    for(var i = 0; i < d.info.length; i++)
+                    {
+                        xFile.push(d.info[i].file);
+                    }
+  
+                    TDFile = [...new Set(xFile)];
+                    //console.log('TTTTT:', TDData);
+                    //console.log('FFFFF:', TDFile);
+
+                //svg.selectAll("#Tchart90-text")
+                //.data(cellfreq)
+                //.on("click", function(d) {
+                //    console.log("XXXXX");
+                //    TindCellGraphicsDetails(data, d.file, d.gene, searchData);
+                //});
             });
 
+    } 
+
+
+
+    function geneCommonTrans()
+    {
+        var snps = [];
+        
+        for(var i = 0; i < TDData.length; i++)
+        {
+            for(var j = 0; j < TDData[i].length; j++)
+            {
+                if(TDData[i][j].Gene == TDGene)
+                    snps.push(TDData[i][j]);
+            }
+        }
+        
+        //console.log('SNPS:::', snps);
+
+        var cmn = [];
+        var cmnArray = [];
+        
+        for(var i = 0; i < snps.length; i++)
+        {
+            if(_.contains(cmnArray,snps[i].SNP) == true)
+                cmn.push(snps[i].SNP);
+            
+            else
+                cmnArray.push(snps[i].SNP);
+
+        }
+
+        var textarea = document.getElementById("Tchart7-text");
+        textarea.style.visibility = "visible";
+
+        var content = "";
+
+        for(var i = 0; i < cmn.length; i++)
+        {
+                content += cmn[i] + ", ";
+        }
+        
+        textarea.innerText = content;
+
+        //Change color
+        d3.select("#Tchart4-svg").selectAll(".indbar").style('fill', 'bisque');
+
     }
+
+
+    function cellCommonTrans()
+    {
+        var snps = [];
+        
+        for(var i = 0; i < TDData.length; i++)
+        {
+            for(var j = 0; j < TDData[i].length; j++)
+            {
+                if(TDFile.indexOf(TDData[i][j].File) >= 0)
+                    snps.push(TDData[i][j]);
+            }
+        }
+        
+        //console.log('SNPS:::', snps);
+
+        var cmn = [];
+        var cmnArray = [];
+        
+        for(var i = 0; i < snps.length; i++)
+        {
+            if(_.contains(cmnArray,snps[i].SNP) == true)
+                cmn.push(snps[i].SNP);
+            
+            else
+                cmnArray.push(snps[i].SNP);
+
+        }
+
+        var textarea = document.getElementById("Tchart9-text");
+        textarea.style.visibility = "visible";
+
+        var content = "";
+
+        for(var i = 0; i < cmn.length; i++)
+        {
+                content += cmn[i] + ", ";
+        }
+        
+        textarea.innerText = content;
+
+        //Change color
+        d3.select("#Tchart6-svg").selectAll(".indbar").style('fill', 'bisque');
+
+    }
+
 
 
     function TindCellGraphics(searchData, cellfreq, cell)
@@ -2448,6 +2284,7 @@ div.tooltip {
         var procdata = [];
         var data = [];
         var sorteddata = [];
+        var dict = [];
 
         for(var i = 0; i < cellfreq.length; i++)
             if(cellfreq[i].cell == cell)
@@ -2460,18 +2297,28 @@ div.tooltip {
             
             for(var j = 0; j < searchData.length; j++)
             {
-                if(initdata[0][i].gene == searchData[j].g)
+                if(searchData[j].length > 0 && (initdata[0][i].gene == searchData[j][0].Gene) )
                 {
-                    for(var k = 0; k < searchData[j].d.length; k++)
+                    var str = initdata[0][i].gene;
+
+                    for(var k = 0; k < searchData[j].length; k++)
                     {
-                        if(initdata[0][i].file == searchData[j].d[k].f)
-                            indproclength = searchData[j].d[k].s.length;
+                        if(initdata[0][i].file == searchData[j][k].File)
+                        {
+                            str += initdata[0][i].file;
+                            indproclength++; // = searchData[j][k].length;
+                        }
                     }
                 }
             }
             
-            var obj = {gene: initdata[0][i].gene, file:initdata[0][i].file, freq: indproclength};
-            procdata.push(obj);
+            if(_.contains(dict,str) != true)
+            {
+                var obj = {gene: initdata[0][i].gene, file:initdata[0][i].file, freq: indproclength};  
+                procdata.push(obj);
+                dict.push(str);
+            }
+
         }
 
         // sort transMeta based on snp count
@@ -2481,7 +2328,9 @@ div.tooltip {
         for(var i = 1; i < procdata.length+1; i++)
             data.push(sorteddata[sorteddata.length - i]);
 
-        var barheight = (height / data.length) - (20 / data.length);
+        //console.log('DATAAAA::', data);
+       
+        var barheight = (height / (_.uniq(data)).length) - (20 / (_.uniq(data)).length);
         
         if(data.length == 1)
             barheight -= 20;
@@ -2534,6 +2383,10 @@ div.tooltip {
                 .on('mouseout', tip.hide)                     
                 .on("click", function(d) {
                     TindCellGraphicsDetails(data, d.file, d.gene, searchData);
+
+                    //Change color
+                    d3.select("#Tchart6-svg").selectAll(".indbar").style('fill', 'bisque');
+                    d3.select(this).style('fill', 'orange');
                 });
 
         d3.selectAll(".Tchart6-g")
@@ -2549,6 +2402,26 @@ div.tooltip {
                             return TdatasetsArr[0][i].ethnicity;
                     }
                 });
+
+        d3.selectAll(".Tchart6-g")
+            .data(data)
+            .append("text")
+            .attr("x", function(dd) { return width + 160; })
+            .attr("y", function(dd) { return y(dd.gene + "---" + dd.file) + barheight / 2; })
+            .attr("dy", ".35em")
+            .attr("fill", "blue")
+            .html(function(dd, i) { 
+                    var link = "'index.html?s=2&g=";
+                    var urlgene = dd.gene;
+
+                    var urldataset = dd.file.split("-")[1];
+
+                    link = link + urlgene + "&d=" + urldataset + "'";
+
+                    var fullLink = "<a href=" + link + "target='_blank' style='fill:blue'>Details</a>";
+                    return fullLink;
+                });
+
 
        svg.append("text")
         .attr("x", (width / 2))             
@@ -2570,25 +2443,26 @@ div.tooltip {
 
         for(var i = 0; i < searchData.length; i++)
         {
-            if(searchData[i].g == gene)
+            if(searchData[i].length > 0)
             {
-                for(var j = 0; j < searchData[i].d.length; j++)
-                    if(searchData[i].d[j].f == file)
-                        for(var k = 0; k < searchData[i].d[j].s.length; k++)
-                            content += searchData[i].d[j].s[k] + ", ";
+                for(var j = 0; j < searchData[i].length; j++)
+                {
+                    if((searchData[i][j].Gene == gene) && (searchData[i][j].File == file) )
+                        content += searchData[i][j].SNP + ", ";
+                }
             }
         }
-        
         textarea.innerText = content;
     }
+
 
 
     function Tgetsnpcount(data)
     {
         var snpcount = 0;
               
-        for(var i = 0; i < data.d.length; i++)
-            snpcount += data.d[i].s.length;
+        for(var i = 0; i < data.length; i++)
+            snpcount ++; //= parseInt(data[i].s);
 
         return snpcount;
 
@@ -2653,38 +2527,36 @@ div.tooltip {
 
 
     function Tgetcellfreq(data)
-    {
+    {        
         var cell = [];
         var cellfreq = [];
         var finalCellData = [];
               
         for(var k = 0; k < data.length; k++) {
-            for(var i = 0; i < data[k].d.length; i++) {
-                    var filelookup = _.find(TdatasetsArr[0], function(d) {return d.id == data[k].d[i].f});//_.indexOf(TdatasetsArr[0].id, data[k].d[i].f);
-                    //var ind = _.indexOf(cell, data[k].d[i].s[j]);
+            for(var i = 0; i < data[k].length; i++) {
+                    var filelookup = _.find(TdatasetsArr[0], function(d) {return d.id == data[k][i].File});
+                    
                     if(filelookup != undefined)
                     {
-                        //console.log('File details:::', filelookup.cell);
                         var ind = _.indexOf(cell, filelookup.cell);
 
                         if(ind < 0)
                         {
                             cell.push(filelookup.cell);
                             var infoArr = [];
-                            var infoObj = {gene: data[k].g, file: data[k].d[i].f};
+                            var infoObj = {gene: data[k][i].Gene, file: data[k][i].File};
                             infoArr.push(infoObj);
-                            var cfreq = data[k].d[i].s.length;
+                            var cfreq = 1; //parseInt(data[k][i].s);
                             var obj = {cell: filelookup.cell, info:infoArr, freq: cfreq};
                             cellfreq.push(obj);
                         }
 
                         else {
-                            var cfreq = data[k].d[i].s.length;
+                            var cfreq = 1; //parseInt(data[k][i].s);
                             cellfreq[ind].freq += cfreq;
-                            var infoObj = {gene: data[k].g, file: data[k].d[i].f};
+                            var infoObj = {gene: data[k][i].Gene, file: data[k][i].File};
                             cellfreq[ind].info.push(infoObj);
                         }
-
 
                     }
 
@@ -2700,41 +2572,8 @@ div.tooltip {
 
         //console.log('finalCellData:', finalCellData);
         return finalCellData;
-
     }
 
-
-    function ToldcreateGraphics(transMeta)
-    {
-
-        var width = 820,
-        barHeight = 20;
-
-        var data = [];
-        var sorteddata = [];
-
-        // sort transMeta based on snp count
-        sorteddata = _.sortBy(transMeta, function(dd) { return Tgetsnpcount(dd);  });
-
-        // push the most populous 10 entries to work array
-        for(var i = 1; i < 11; i++)
-            data.push(sorteddata[sorteddata.length - i]);
-
-        console.log('Data...', data);
-
-        //Generate graph...
-        var x = d3.scale.linear()
-                .domain([0, d3.max(data, function(dd) { return Tgetsnpcount(dd); })])
-                .range([0, 820]);
-
-
-        d3.select(".chart")
-          .selectAll("div")
-            .data(data)
-          .enter().append("div")
-            .style("width", function(dd) { return x(Tgetsnpcount(dd)) + "px"; })
-            .text(function(dd) { return dd.g; });
-    }
 
 
     function TloadFile(data)
@@ -2742,7 +2581,7 @@ div.tooltip {
         var genes = [];
         var files = [];
         var allObjects = [];
-        console.log('Length:', data.length);
+        //console.log('Length:', data.length);
 
         for(var i = 0; i < data.length; i++)
         {
@@ -2752,10 +2591,7 @@ div.tooltip {
                 files.push([data[i].Gene, data[i].File]);
                 
                 let obj = {f:data[i].File, s:data[i].SNP};
-                
-                //var d = [data[i].File]]
-                //let obj = {g:data[i].Gene, f:data[i].File, s:data[i].SNP};
-                //allObjects.push(obj);
+
             }
 
             else
@@ -2765,13 +2601,9 @@ div.tooltip {
             }
         }
 
-        console.log('Genes Array:', files);
+        //console.log('Genes Array:', files);
     }
 
-    
-
-    
-    
 
 </script>
 
@@ -2804,13 +2636,13 @@ div.tooltip {
                 </li>
             </ul>
 
-            <ul class="nav navbar-nav">
+            <!--ul class="nav navbar-nav">
                 <li><a class="navbar-brand" style="color: white; margin-left: 10px;" href="metadata.html">Query Meta-data</a>
                     
                     </a>
                 </li>
                 
-            </ul>
+            </ul-->
 
             <ul class="nav navbar-nav">
                 <li><a class="navbar-brand" style="color: white; margin-left: 10px;" href="tutorials.html">Tutorials</a>
@@ -2879,6 +2711,8 @@ div.tooltip {
                 </span>
                 <span><strong> : </strong>
             </span>
+
+            <p style = "margin-top:10px;"> <a style = "margin-left: 60px; padding-top:20 px;" href="index.html"> Query DATA </a></p>
         </div>
         
         <div class="col-md-7" style="font-size:medium;">
@@ -2898,17 +2732,19 @@ div.tooltip {
 
     
 <div id = "allGraphics" style="visibility: hidden;">
-    <div class="row" style="background: white; padding-bottom: 0px; margin-top: 10px; font-family:serif;"> 
-        <div class="col-md-8" style="text-align: center;"> 
+    <div class="row" style="background: white; padding-bottom: 0px; margin-top: 20px; margin-bottom:15px; font-family:serif;"> 
+        <div class="col-md-11" style="text-align: center;"> 
             <h3 style = "margin-left: 20px; margin-bottom: 0px; margin-top: 0px; font-size:1.1vw;"> <strong> Cis-eQTL Metadata </strong> </h3>
         </div>
     </div>
 
-    <div class="row" style="background: white; padding-bottom: 0px; margin-top: 10px; font-family:serif;"> 
+    <div style="background: white; border:1px solid lightgray; " >
+
+    <div class="row" style="background: white; padding-bottom: 0px; margin-top: 10px; font-family:serif; margin-left:5px; margin-right:5px;"> 
         <h4 style = "margin-left: 20px; margin-bottom: 0px; margin-top: 0px; font-size:0.9vw;"> <strong> Genes Summary Data </strong> </h3>
     </div>
 
-    <div class="row" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;">
+    <div class="row" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;margin-left:5px;margin-right:5px;">
         <div class="col-md-6" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;"> 
             <div id="chart1" style = "margin-left: 10px;"></div>
         </div>
@@ -2926,15 +2762,15 @@ div.tooltip {
     </div>
 
     
-    <div class="row" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;"> 
+    <div class="row" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif; margin-left:5px; margin-right:5px;"> 
         <h3 style = "margin-left: 20px; margin-bottom: 0px; margin-top: 0px; font-size:0.9vw;"> <strong> Cell/Study Type Summary Data </strong> </h3>
     </div>
 
-    <div class="row" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;">
+    <div class="row" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;margin-left:5px; margin-right:5px;">
         <div class="col-md-6" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;"> 
             <div id="chart3" style = "margin-left: 10px;"></div>
         </div>
-        <div class="col-md-5" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;"> 
+        <div class="col-md-5" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;margin-left:5px; margin-right:5px;"> 
             <div class="row" style="background: white; padding-bottom: 0px; margin-top: 0px; margin-left: -40px; font-family:serif;">
                 <div id="chart6" style = "margin-left: 10px;"></div>
             </div>
@@ -2947,26 +2783,34 @@ div.tooltip {
         </div>
     </div>
 
+    </div>
     <hr>
 
-    <div class="row" style="background: white; padding-bottom: 0px; margin-top: 10px; font-family:serif;"> 
-        <div class="col-md-8" style="text-align: center;"> 
+    <div class="row" style="background: white; padding-bottom: 0px; margin-top: 20px; margin-bottom: 15px; font-family:serif;"> 
+        <div class="col-md-11" style="text-align: center;"> 
             <h3 style = "margin-left: 20px; margin-bottom: 0px; margin-top: 0px; font-size:1.1vw;"> <strong> Trans-eQTL Metadata </strong> </h3>
         </div>
     </div>
 
+    <div style="background: white; border:1px solid lightgray; " >
 
-    <div class="row" style="background: white; padding-bottom: 0px; margin-top: 10px; font-family:serif;"> 
+    <div class="row" style="background: white; padding-bottom: 0px; margin-top: 10px; font-family:serif;margin-left:5px; margin-right:5px;"> 
         <h4 style = "margin-left: 20px; margin-bottom: 0px; margin-top: 0px; font-size:0.9vw;"> <strong> Genes Summary Data </strong> </h3>
     </div>
 
-    <div class="row" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;">
+    <div class="row" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;margin-left:5px; margin-right:5px;">
         <div class="col-md-6" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;"> 
             <div id="Tchart1" style = "margin-left: 10px;"></div>
         </div>
         <div class="col-md-6" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;"> 
             <div class="row" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;">
                 <div id="Tchart4" style = "margin-left: 10px;"></div>
+            </div>
+
+            <div class="row" style="background: white; padding-bottom: 0px; margin-top: -20px; margin-bottom: 10px; font-family:serif;">
+                <div id="Tchart70" style = "margin-left: 10px;">
+                    <button id="Tchart70-text" onclick="geneCommonTrans();" style="visibility: hidden; padding-top:0px; margin-bottom:5px; overflow:inherit;overflow-x: hidden; font-size: 16px;"> Trans-eQTLs in &ge; 2 datasets </button>
+                </div>
             </div>
 
             <div class="row" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;">
@@ -2978,17 +2822,23 @@ div.tooltip {
     </div>
 
     
-    <div class="row" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;"> 
+    <div class="row" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;margin-left:5px; margin-right:5px;"> 
         <h3 style = "margin-left: 20px; margin-bottom: 0px; margin-top: 0px; font-size:0.9vw;"> <strong> Cell/Study Type Summary Data </strong> </h3>
     </div>
 
-    <div class="row" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;">
+    <div class="row" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;margin-left:5px; margin-right:5px;">
         <div class="col-md-6" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;"> 
             <div id="Tchart3" style = "margin-left: 10px;"></div>
         </div>
         <div class="col-md-6" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;"> 
             <div class="row" style="background: white; padding-bottom: 0px; margin-top: 0px; margin-left: -40px; font-family:serif;">
                 <div id="Tchart6" style = "margin-left: 10px;"></div>
+            </div>
+            
+            <div class="row" style="background: white; padding-bottom: 0px; margin-top: -20px; margin-bottom: 10px; font-family:serif;">
+                <div id="Tchart90" style = "margin-left: 10px;">
+                    <button id="Tchart90-text" onclick="cellCommonTrans();" style="visibility: hidden; padding-top:0px; margin-bottom:5px; overflow:inherit;overflow-x: hidden; font-size: 16px;"> Trans-eQTLs in &ge; 2 datasets </button>
+                </div>
             </div>
 
             <div class="row" style="background: white; padding-bottom: 0px; margin-top: 0px; font-family:serif;">
@@ -2998,6 +2848,8 @@ div.tooltip {
             </div>
         </div>
     </div>
+
+</div>
 
 </div>    
 
